@@ -1,6 +1,7 @@
 import numpy as np
 
-from pkg_resources import resource_filename
+from   pkg_resources import resource_filename
+from   tmr_ecorr     import tmr_ecorr
 
 # https://arxiv.org/pdf/1409.4681.pdf
 class tmr_kcorr():
@@ -16,15 +17,7 @@ class tmr_kcorr():
         aa  = self.raw[idx, 1:]
         zz  = np.exp(np.log(zz)[:,None] * self.base[None,:])
 
-        # print(idx)
-        # print(aa)
-        # print(self.base)
-        # print(zz)
-
-        res = aa * zz
-
-        # print(res)
-        
+        res = aa * zz        
         res = np.sum(res, axis=1)
         
         return res
