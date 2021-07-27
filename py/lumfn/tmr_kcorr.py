@@ -14,6 +14,8 @@ class tmr_kcorr():
         zz  = np.atleast_1d(zz) 
         
         idx = np.digitize(obs_gmr, self.raw[:,0], right=True)
+        idx = np.minimum(idx, len(self.raw) - 1)
+        
         aa  = self.raw[idx, 1:]
         zz  = np.exp(np.log(zz)[:,None] * self.base[None,:])
 
