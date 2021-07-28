@@ -5,6 +5,7 @@ from   pkg_resources     import resource_filename
 from   tmr_ecorr         import tmr_ecorr
 from   astropy.table     import Table
 from   scipy.interpolate import interp1d
+from   scipy.stats       import linregress
 
 # See: https://arxiv.org/pdf/1409.4681.pdf
 #      https://arxiv.org/pdf/1701.06581.pdf
@@ -14,13 +15,13 @@ class ajs_kcorr():
         self.z0      = 0.1
         self.raw_dir = resource_filename('lumfn', 'data/')
         
-        self.names = ['gmr_min', 'gmr_max', 'A0', 'A1', 'A2', 'A3', 'A4', 'gmr_med']
+        self.names   = ['gmr_min', 'gmr_max', 'A0', 'A1', 'A2', 'A3', 'A4', 'gmr_med']
         
-        self.rawg  = Table(np.loadtxt(self.raw_dir + '/ajs_kcorr_gband_z01.dat'), names=self.names)
-        self.rawr  = Table(np.loadtxt(self.raw_dir + '/ajs_kcorr_rband_z01.dat'), names=self.names)
+        self.rawg    = Table(np.loadtxt(self.raw_dir + '/ajs_kcorr_gband_z01.dat'), names=self.names)
+        self.rawr    = Table(np.loadtxt(self.raw_dir + '/ajs_kcorr_rband_z01.dat'), names=self.names)
         
         # Note: gmr color bounds are common to both. 
-        self.clims = self.rawg['gmr_min', 'gmr_max', 'gmr_med']
+        self.clims   = self.rawg['gmr_min', 'gmr_max', 'gmr_med']
 
         # Keep only coeff. tables.                                                                                                                                                            
         for nm in ['gmr_min', 'gmr_max', 'gmr_med']:
@@ -29,57 +30,96 @@ class ajs_kcorr():
         
         # For An * z^n dot product. 
         self.base  = 4 - np.arange(0, 5, 1)
+
+        self.Ans    = {'g': {'raw': self.rawg}, 'r': {'raw': self.rawr}}
         
-        # Seed interpolators. 
-        self.gAns  = {}
-        self.rAns  = {}
+        for band in ['g', 'r']:
+            for nm in ['A0', 'A1', 'A2', 'A3', 'A4']:
+                # Interpolators in color.  Note extrapolation call. 
+                self.Ans[band][nm] = interp1d(self.clims['gmr_med'], self.Ans[band]['raw'][nm], kind='linear', fill_value='extrapolate')
+                
+            # Fall back for A4. 
+            self.Ans[band]['A4'] = lambda x: self.Ans[band]['raw']['A4'][0]
 
-        for nm in ['A0', 'A1', 'A2', 'A3', 'A4']:
-            # Interpolators in color.  Note extrapolation call. 
-            self.gAns[nm] = interp1d(self.clims['gmr_med'], self.rawg[nm], kind='linear', fill_value='extrapolate')
-            self.rAns[nm] = interp1d(self.clims['gmr_med'], self.rawr[nm], kind='linear', fill_value='extrapolate')
-
-        # Fall back for A4. 
-        self.gAns['A4'] = lambda x: self.rawg['A4'][0]
-        self.rAns['A4'] = lambda x: self.rawr['A4'][0]
-
-        self.Ans = {'g': self.gAns, 'r': self.rAns}
-        
-    def eval(self, obs_gmr, zz, band):
-        zz      = np.atleast_1d(zz) 
+        self.prep_extrap()
+            
+    def _eval(self, obs_gmr, zz, band):
+        zz           = np.atleast_1d(np.array(zz, copy=True)) 
         
         # Clip passed observed color. 
-        obs_gmr = np.clip(obs_gmr, np.min(self.clims['gmr_med']), np.max(self.clims['gmr_med']))
+        obs_gmr      = np.clip(obs_gmr, np.min(self.clims['gmr_med']), np.max(self.clims['gmr_med']))
         
         # Get coefficients at this color. 
-        aa      = np.array([self.Ans[band][x](obs_gmr) for x in ['A0', 'A1', 'A2', 'A3', 'A4']])
+        aa           = np.array([self.Ans[band][x](obs_gmr) for x in ['A0', 'A1', 'A2', 'A3', 'A4']])
 
-        # Fails below z0. 
-        zz      = np.exp(np.log(zz - self.z0)[:,None] * self.base[None,:])
+        idx          = (zz <= self.z0)
         
-        res     = aa * zz        
-        res     = np.sum(res, axis=1)
+        zz          -= self.z0        
+        zz[idx]      = -zz[idx]
+        
+        sgns         = np.ones_like(zz)[:,None] * np.array([(-1) ** n for n in self.base])[None,:]
+        sgns[~idx,:] = 1.0
+
+        zz           = np.exp(np.log(zz)[:,None] * self.base[None,:])
+        zz          *= sgns
+        
+        res          = aa * zz        
+        res          = np.sum(res, axis=1)
         
         return res
+
+    def prep_extrap(self):
+        zs = [0.48, 0.50]
+
+        for band in ['g', 'r']:
+            slopes = []
+            intercepts = []
+            
+            for gmr in self.clims['gmr_med']:
+                ys = self._eval(gmr, zs, band)
+            
+                slope, intercept, _, _, _ = linregress(zs,ys)
+
+                slopes.append(slope)
+                intercepts.append(intercept)
+
+            self.Ans[band]['L0'] = interp1d(self.clims['gmr_med'], np.array(intercepts), kind='linear', fill_value='extrapolate')
+            self.Ans[band]['L1'] = interp1d(self.clims['gmr_med'], np.array(slopes),     kind='linear', fill_value='extrapolate')
+
+    def eval(self, obs_gmr, zz, band):
+        zz           = np.atleast_1d(np.array(zz, copy=True))
+        
+        res = self._eval(obs_gmr, zz, band)
+        res[zz > 0.5] = self.Ans[band]['L0'](obs_gmr) + self.Ans[band]['L1'](obs_gmr) * zz[zz > 0.5]
+
+        return res
+
     
- 
 if __name__ == '__main__':
     import pylab as pl
         
     x    = ajs_kcorr()
 
     gmrs = [0.130634, 0.298124, 0.443336, 0.603434, 0.784644, 0.933226, 1.0673]
-    zs   = np.arange(0.11,0.601,0.01)
+    zs   = np.arange(0.01,0.801,0.01)
 
     fig, axes = plt.subplots(1,2, figsize=(15,5))
+
+    colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
     
-    for gmr in gmrs:
+    for gmr, color in zip(gmrs, colors):
+        gks = x._eval(gmr, zs, 'g')
+        rks = x._eval(gmr, zs, 'r')
+        
+        axes[0].plot(zs, rks, label='', alpha=0.25, c=color)
+        axes[1].plot(zs, gks, label='', alpha=0.25, c=color)
+
         gks = x.eval(gmr, zs, 'g')
         rks = x.eval(gmr, zs, 'r')
-        
-        axes[0].plot(zs, rks, label=r"$(g-r)=%.3f$" % gmr)
-        axes[1].plot(zs, gks, label=r"$(g-r)=%.3f$" % gmr)
 
+        axes[0].plot(zs, rks, label=r"$(g-r)=%.3f$" % gmr, c=color)
+        axes[1].plot(zs, gks, label=r"$(g-r)=%.3f$" % gmr, c=color)
+        
     axes[0].set_ylabel(r"$^{0.1}K_r(z)$")
     axes[1].set_ylabel(r"$^{0.1}K_g(z)$")
     
