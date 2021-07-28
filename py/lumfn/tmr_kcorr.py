@@ -3,7 +3,9 @@ import numpy as np
 from   pkg_resources import resource_filename
 from   tmr_ecorr     import tmr_ecorr
 
-# https://arxiv.org/pdf/1409.4681.pdf
+# See: https://arxiv.org/pdf/1409.4681.pdf
+#      https://arxiv.org/pdf/1701.06581.pdf
+# 
 class tmr_kcorr():
     def __init__(self):
         self.raw_dir = resource_filename('lumfn', 'data/')

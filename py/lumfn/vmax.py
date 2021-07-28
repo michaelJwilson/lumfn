@@ -12,6 +12,7 @@ def zmax(kcorr, Mrh, rlim, lolim=0.0, hilim=3.0):
     def diff(zz):
         mm  = app_mag(kcorr, Mrh, zz)
 
+        # Brent relies on sign differen above and below zero point.
         return rlim - mm
 
     def absdiff(zz):
@@ -21,7 +22,7 @@ def zmax(kcorr, Mrh, rlim, lolim=0.0, hilim=3.0):
         result = brentq(diff, lolim, hilim)
         
     except ValueError as VE:
-        print('Falling back to minimizer for Mrh: {}'.format(Mrh))
+        # print('Falling back to minimizer for Mrh: {}'.format(Mrh))
         
         # If sufficiently bright, not fainter than rlim at hilim.
         # Brent method fails, requires sign change across boundaries. 

@@ -13,11 +13,12 @@ def abs_mag(kcorr, rpetro, obs_gmr, zz):
 
      kk  = kcorr.eval(obs_gmr, zz)
 
-     tt  = 'gray'  # Base on obs_gmr.
+     tt  = 'gray'  # TODO: Base on obs_gmr.
      EE  = tmr_ecorr(tt, zz)
      
-     #  M - 5log10(h)
-     return  rpetro - mu - kk - EE
+     #  Returns:  M - 5log10(h)
+     #  See https://arxiv.org/pdf/1409.4681.pdf
+     return  rpetro - mu # - kk - EE
 
 def app_mag(kcorr, Mrh, zz):
      # Mrh \equiv Mr - 5log10(h)
@@ -34,13 +35,6 @@ def app_mag(kcorr, Mrh, zz):
      '''
      return Mrh + mu
 
-#  Cases to catch. 
-
-#  Stellar, negative redshift. 
-#  18.045475 0.77989006 -0.0001094191322428999 -0.14781370053573228 [nan]
-
-#  Half a magnitude redder than Smith et al.; 
-#  19.270914 0.64866066 1.4671619464660783 1933467373610.0474 [-61.1826436]
      
 if __name__ == '__main__':
      x   = tmr_kcorr()
