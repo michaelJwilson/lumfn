@@ -13,6 +13,8 @@ from   scipy.stats       import linregress
 class ajs_kcorr():
     def __init__(self):
         self.z0      = 0.1
+        self.zmin    = 1.e-16 
+        
         self.raw_dir = resource_filename('lumfn', 'data/')
         
         self.names   = ['gmr_min', 'gmr_max', 'A0', 'A1', 'A2', 'A3', 'A4', 'gmr_med']
@@ -60,7 +62,7 @@ class ajs_kcorr():
         sgns         = np.ones_like(zz)[:,None] * np.array([(-1) ** n for n in self.base])[None,:]
         sgns[~idx,:] = 1.0
 
-        zz           = np.exp(np.log(zz)[:,None] * self.base[None,:])
+        zz           = np.exp(np.log(self.zmin + zz)[:,None] * self.base[None,:])
         zz          *= sgns
         
         res          = aa * zz        
@@ -86,14 +88,22 @@ class ajs_kcorr():
             self.Ans[band]['L0'] = interp1d(self.clims['gmr_med'], np.array(intercepts), kind='linear', fill_value='extrapolate')
             self.Ans[band]['L1'] = interp1d(self.clims['gmr_med'], np.array(slopes),     kind='linear', fill_value='extrapolate')
 
-    def eval(self, obs_gmr, zz, band):
-        zz           = np.atleast_1d(np.array(zz, copy=True))
+    def ref_eval(self, obs_gmr, zz, band):
+        zz            = np.atleast_1d(np.array(zz, copy=True))
         
-        res = self._eval(obs_gmr, zz, band)
+        res           = self._eval(obs_gmr, zz, band)
         res[zz > 0.5] = self.Ans[band]['L0'](obs_gmr) + self.Ans[band]['L1'](obs_gmr) * zz[zz > 0.5]
 
         return res
 
+    def eval(self, obs_gmr, zz, band, ref_z=0.1):
+        res           = self.ref_eval(obs_gmr, zz, band)
+        shift         = self.ref_eval(obs_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
+
+        print(shift)
+        
+        return  res - shift
+    
     
 if __name__ == '__main__':
     import pylab as pl
@@ -114,12 +124,18 @@ if __name__ == '__main__':
         axes[0].plot(zs, rks, label='', alpha=0.25, c=color)
         axes[1].plot(zs, gks, label='', alpha=0.25, c=color)
 
-        gks = x.eval(gmr, zs, 'g')
-        rks = x.eval(gmr, zs, 'r')
+        gks = x.ref_eval(gmr, zs, 'g')
+        rks = x.ref_eval(gmr, zs, 'r')
+
+        axes[0].plot(zs, rks, '--', c=color)
+        axes[1].plot(zs, gks, '--', c=color)
+
+        gks = x.eval(gmr, zs, 'g', ref_z=0.01)
+        rks = x.eval(gmr, zs, 'r', ref_z=0.01)
 
         axes[0].plot(zs, rks, label=r"$(g-r)=%.3f$" % gmr, c=color)
         axes[1].plot(zs, gks, label=r"$(g-r)=%.3f$" % gmr, c=color)
-        
+
     axes[0].set_ylabel(r"$^{0.1}K_r(z)$")
     axes[1].set_ylabel(r"$^{0.1}K_g(z)$")
     

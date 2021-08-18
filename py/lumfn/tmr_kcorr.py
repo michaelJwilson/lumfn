@@ -8,11 +8,13 @@ from   tmr_ecorr     import tmr_ecorr
 # 
 class tmr_kcorr():
     def __init__(self):
+        self.z0 = 0.0
+        
         self.raw_dir = resource_filename('lumfn', 'data/')
         self.raw = np.loadtxt(self.raw_dir + '/tmr_kcorr.txt')
         self.base = 4 - np.arange(0, 5, 1)
         
-    def eval(self, obs_gmr, zz):
+    def eval(self, obs_gmr, zz, band='r'):
         zz  = np.atleast_1d(zz) 
         
         idx = np.digitize(obs_gmr, self.raw[:,0], right=True)
