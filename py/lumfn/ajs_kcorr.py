@@ -45,14 +45,14 @@ class ajs_kcorr():
 
         self.prep_extrap()
             
-    def _eval(self, obs_gmr, zz, band):
+    def _eval(self, ref_gmr, zz, band):
         zz           = np.atleast_1d(np.array(zz, copy=True)) 
         
         # Clip passed observed color. 
-        obs_gmr      = np.clip(obs_gmr, np.min(self.clims['gmr_med']), np.max(self.clims['gmr_med']))
+        ref_gmr      = np.clip(ref_gmr, np.min(self.clims['gmr_med']), np.max(self.clims['gmr_med']))
         
         # Get coefficients at this color. 
-        aa           = np.array([self.Ans[band][x](obs_gmr) for x in ['A0', 'A1', 'A2', 'A3', 'A4']])
+        aa           = np.array([self.Ans[band][x](ref_gmr) for x in ['A0', 'A1', 'A2', 'A3', 'A4']])
 
         idx          = (zz <= self.z0)
         
@@ -88,19 +88,17 @@ class ajs_kcorr():
             self.Ans[band]['L0'] = interp1d(self.clims['gmr_med'], np.array(intercepts), kind='linear', fill_value='extrapolate')
             self.Ans[band]['L1'] = interp1d(self.clims['gmr_med'], np.array(slopes),     kind='linear', fill_value='extrapolate')
 
-    def ref_eval(self, obs_gmr, zz, band):
+    def ref_eval(self, ref_gmr, zz, band):
         zz            = np.atleast_1d(np.array(zz, copy=True))
         
-        res           = self._eval(obs_gmr, zz, band)
-        res[zz > 0.5] = self.Ans[band]['L0'](obs_gmr) + self.Ans[band]['L1'](obs_gmr) * zz[zz > 0.5]
+        res           = self._eval(ref_gmr, zz, band)
+        res[zz > 0.5] = self.Ans[band]['L0'](ref_gmr) + self.Ans[band]['L1'](ref_gmr) * zz[zz > 0.5]
 
         return res
 
-    def eval(self, obs_gmr, zz, band, ref_z=0.1):
-        res           = self.ref_eval(obs_gmr, zz, band)
-        shift         = self.ref_eval(obs_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
-
-        print(shift)
+    def eval(self, ref_gmr, zz, band, ref_z=0.1):
+        res           = self.ref_eval(ref_gmr, zz, band)
+        shift         = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
         
         return  res - shift
     

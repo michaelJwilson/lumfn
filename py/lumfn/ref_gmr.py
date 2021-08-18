@@ -1,17 +1,18 @@
 import scipy
-import numpy     as     np
-import pylab     as     pl 
+import numpy          as     np
+import pylab          as     pl 
 
-from   distances import comoving_distance, dist_mod
+from   distances      import comoving_distance, dist_mod
 
-from   ajs_kcorr import ajs_kcorr
+from   ajs_kcorr      import ajs_kcorr
 
-from   tmr_kcorr import tmr_kcorr
-from   tmr_ecorr import	tmr_ecorr
+from   tmr_kcorr      import tmr_kcorr
+from   tmr_ecorr      import tmr_ecorr
 from   scipy.optimize import brentq, minimize
+from   params         import params
 
 
-def ref_gmr(kcorr, gmr, z, zref=0.1):
+def ref_gmr(kcorr, gmr, z, zref=params['ref_z']):
      def diff(x):
           # Here, x is the ref_color to be solved for. 
           obs  = x - kcorr.eval(x, zref, band='g') + kcorr.eval(x, zref, band='r')

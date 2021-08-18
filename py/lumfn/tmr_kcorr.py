@@ -14,7 +14,9 @@ class tmr_kcorr():
         self.raw = np.loadtxt(self.raw_dir + '/tmr_kcorr.txt')
         self.base = 4 - np.arange(0, 5, 1)
         
-    def eval(self, obs_gmr, zz, band='r'):
+    def eval(self, obs_gmr, zz, band='r', ref_z=0.0):
+        assert ref_z == 0.0, "Non z=0.0 reference is unsupported."
+        
         zz  = np.atleast_1d(zz) 
         
         idx = np.digitize(obs_gmr, self.raw[:,0], right=True)
