@@ -7,7 +7,6 @@ from   distances      import comoving_distance, dist_mod
 from   ajs_kcorr      import ajs_kcorr
 
 from   tmr_kcorr      import tmr_kcorr
-from   tmr_ecorr      import tmr_ecorr
 from   scipy.optimize import brentq, minimize
 from   params         import params
 

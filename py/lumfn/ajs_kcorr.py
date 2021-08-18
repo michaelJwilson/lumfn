@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from   pkg_resources     import resource_filename
-from   tmr_ecorr         import tmr_ecorr
 from   astropy.table     import Table
 from   scipy.interpolate import interp1d
 from   scipy.stats       import linregress

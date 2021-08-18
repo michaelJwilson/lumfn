@@ -1,7 +1,6 @@
 import numpy as np
 
 from   pkg_resources import resource_filename
-from   tmr_ecorr     import tmr_ecorr
 
 # See: https://arxiv.org/pdf/1409.4681.pdf
 #      https://arxiv.org/pdf/1701.06581.pdf
