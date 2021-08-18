@@ -44,7 +44,9 @@ class ajs_kcorr():
             self.Ans[band]['A4'] = lambda x: self.Ans[band]['raw']['A4'][0]
 
         self.prep_extrap()
-            
+
+        self.eval    = np.vectorize(self.__eval)
+        
     def _eval(self, ref_gmr, zz, band):
         zz           = np.atleast_1d(np.array(zz, copy=True)) 
         
@@ -96,12 +98,13 @@ class ajs_kcorr():
 
         return res
 
-    def eval(self, ref_gmr, zz, band, ref_z=0.1):
+
+    def __eval(self, ref_gmr, zz, band, ref_z=0.0):
         res           = self.ref_eval(ref_gmr, zz, band)
         shift         = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
         
         return  res - shift
-    
+
     
 if __name__ == '__main__':
     import pylab as pl
