@@ -5,6 +5,7 @@ from   pkg_resources     import resource_filename
 from   astropy.table     import Table
 from   scipy.interpolate import interp1d
 from   scipy.stats       import linregress
+from   tmr_ecorr         import tmr_ecorr
 
 # See: https://arxiv.org/pdf/1409.4681.pdf
 #      https://arxiv.org/pdf/1701.06581.pdf
@@ -43,7 +44,7 @@ class ajs_kcorr():
             self.Ans[band]['A4'] = lambda x: self.Ans[band]['raw']['A4'][0]
 
         self.prep_extrap()
-
+                    
         self.eval    = np.vectorize(self.__eval)
         
     def _eval(self, ref_gmr, zz, band):
@@ -98,12 +99,15 @@ class ajs_kcorr():
         return res
 
 
-    def __eval(self, ref_gmr, zz, band, ref_z=0.0):
+    def __eval(self, ref_gmr, zz, band, ref_z=0.0, ecorr=True):
         res           = self.ref_eval(ref_gmr, zz, band)
         shift         = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
-        
-        return  res - shift
+        res          -= shift
 
+        if ecorr:
+            res      += tmr_ecorr(zz, tt='gray', zref=ref_z, band=band)
+
+        return  res
     
 if __name__ == '__main__':
     import pylab as pl

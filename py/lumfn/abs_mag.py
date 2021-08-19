@@ -9,7 +9,6 @@ from   ajs_kcorr import ajs_kcorr
 from   params    import params
 
 from   tmr_kcorr import tmr_kcorr
-from   tmr_ecorr import	tmr_ecorr
 from   ref_gmr   import reference_gmr
 
 
@@ -20,16 +19,13 @@ def abs_mag(kcorr, rpetro, ref_gmr, zz, band='r', ref_z=params['ref_z'], distanc
      # Note: tmr references to z=0.0; ajs to z=0.1;
      kk  = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z)
 
-     # Note:  defaults to gray type. 
-     EE  = tmr_ecorr(zz, band=band)
-     
      #  Returns:  M - 5log10(h)
      #  See https://arxiv.org/pdf/1409.4681.pdf
 
      if distance_only:
           return rpetro - mu
      else:
-          return rpetro - mu - kk - EE
+          return rpetro - mu - kk
 
 def app_mag(kcorr, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=None, distance_only=False):     
      # Mh \equiv Mr - 5log10(h)
@@ -41,13 +37,10 @@ def app_mag(kcorr, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=Non
 
      kk       = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z)
 
-     # Note:  defaults to gray type.
-     EE       = tmr_ecorr(zz, band=band)
-
      if distance_only:
           return Mh + mu
      else:
-          return Mh + mu + kk + EE
+          return Mh + mu + kk
 
 
 if __name__ == '__main__':
