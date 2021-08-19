@@ -101,10 +101,11 @@ for ii, row in enumerate(bright_merge_cat):
         percentage_complete = 100. * ii / len(bright_merge_cat)
         
         print('{:.2f} complete after {:.2f} minutes.'.format(percentage_complete, runtime))
-
+        '''
         if runtime > .5:
             break
-
+        '''
+        
 derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGSZWEIGHT', 'VOLUME', 'MRH', 'ZMAX', 'VMAX', 'VONVMAX'])
 
 derived.pprint(max_width=-1)
