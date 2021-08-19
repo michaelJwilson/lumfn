@@ -43,8 +43,9 @@ def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lo
               
     return  result
 
-def vmax(kcorr, rlim, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], min_z=1.e-16, fsky=1.0, distance_only=False):
-    max_z = zmax(kcorr, rlim, Mh, obs_gmr, zz, band='r', ref_z=ref_z, distance_only=distance_only)
+def vmax(kcorr, rlim, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], min_z=1.e-16, fsky=1.0, max_z=None, distance_only=False):
+    if max_z == None:
+        max_z = zmax(kcorr, rlim, Mh, obs_gmr, zz, band='r', ref_z=ref_z, distance_only=distance_only)
     
     return  comoving_volume(min_z, max_z, fsky)
 

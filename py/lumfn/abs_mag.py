@@ -12,10 +12,13 @@ from   tmr_kcorr import tmr_kcorr
 from   ref_gmr   import reference_gmr
 
 
-def abs_mag(kcorr, rpetro, ref_gmr, zz, band='r', ref_z=params['ref_z'], distance_only=False):
+def abs_mag(kcorr, rpetro, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=None, distance_only=False):
      chi = comoving_distance(zz)
      mu  = dist_mod(chi)
 
+     if ref_gmr == None:
+          ref_gmr = reference_gmr(kcorr, obs_gmr, zz, zref=ref_z)
+     
      # Note: tmr references to z=0.0; ajs to z=0.1;
      kk  = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z)
 
@@ -51,10 +54,9 @@ if __name__ == '__main__':
      rp      =  19.8
      Mh      = -21.0
 
-     ref_gmr = 0.708
      obs_gmr = 0.500 
      
-     MM      = abs_mag(x, rp, ref_gmr, zz,  band='r')
+     MM      = abs_mag(x, rp, obs_gmr, zz,  band='r')
      
      for zz in np.arange(0.01, 0.5, 0.025):
           ref_gmr = reference_gmr(x, obs_gmr, zz, zref=params['ref_z'])
