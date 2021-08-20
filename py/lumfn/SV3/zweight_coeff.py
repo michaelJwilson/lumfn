@@ -31,8 +31,8 @@ print(popt)
 xs = np.arange(19.0, 23.0, 0.05)
 
 pl.plot(bright_binned['FIBER_RMAG'], bright_binned['BGS_Z_SUCCESS'], c='k', lw=0.25, label='BGS BRIGHT')
-pl.plot(xs, zsuccess(xs), label='Best fit', alpha=0.5)
-pl.plot(xs, zsuccess(xs, a=1.31, b=22.314), label='Sam', alpha=0.5)
+pl.plot(xs, zsuccess(xs, a=popt[0], b=popt[1]), label='Best fit', alpha=0.5)
+pl.plot(xs, zsuccess(xs, a=1.31,    b=22.314),  label='Sam',      alpha=0.5)
 
 pl.xlabel('FIBER_RMAG')
 pl.ylabel('BGS $z$ Success')
@@ -40,5 +40,7 @@ pl.ylabel('BGS $z$ Success')
 pl.legend(frameon=False, loc=1)
 
 pl.ylim(-0.05, 1.05)
+
+pl.title('({:.3f},{:.3f})'.format(popt[0], popt[1]))
 
 pl.show()

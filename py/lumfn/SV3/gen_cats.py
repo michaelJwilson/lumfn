@@ -42,7 +42,7 @@ bright_merge     = bright_merge[(sv3_targetmask.bgs_mask['BGS_BRIGHT'] & bright_
 # Limit to spectro. observations on a working fiber.
 # Limit to first observation.  Subsequent observations reassigned on the basis of a bad first redshift.  Check: is 3000 true only of dark time?  Doubtful. 
 # 300 km/s lower limit for stars; upper limit due to extrapolation of k correction.
-bright_merge_obs                    = bright_merge[(bright_merge['ZWARN'].data != 999999) & (bright_merge['FIBERSTATUS'] == 0) & (bright_merge['PRIORITY'] > 3000.) & (bright_merge['Z'] >= 0.001) & (bright_merge['Z'] <= 0.5)]
+bright_merge_obs                    = bright_merge[(bright_merge['ZWARN'].data != 999999) & (bright_merge['FIBERSTATUS'] == 0) & (bright_merge['PRIORITY'] > 3000.)]
 
 # Add fluxes & colors. 
 bright_merge_obs                    = join(bright_merge_obs, bgs_bright['FIBERFLUX_R', 'FLUX_G', 'FLUX_R', 'MW_TRANSMISSION_G', 'MW_TRANSMISSION_R', 'TARGETID'], join_type='left', keys='TARGETID')
@@ -59,6 +59,7 @@ bright_merge_obs['FIBER_RMAG_DRED'] = 22.5 - 2.5 * np.log10(bright_merge_obs['FI
 bright_merge_obs['GMR']             = bright_merge_obs['GMAG'] - bright_merge_obs['RMAG']
 bright_merge_obs['GMR_DRED']        = bright_merge_obs['GMAG_DRED'] - bright_merge_obs['RMAG_DRED']
 
+# (bright_merge_obs['Z'] >= 0.001) & (bright_merge_obs['Z'] <= 0.55)
 bright_merge_obs['BGS_Z_SUCCESS']   = (bright_merge_obs['ZWARN'] == 0) & (bright_merge_obs['DELTACHI2'] > 40.)
 bright_merge_obs['BGS_Z_WEIGHT']    = 1. / zsuccess(bright_merge_obs['FIBER_RMAG'])
 
