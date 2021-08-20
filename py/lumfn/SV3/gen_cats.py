@@ -93,7 +93,7 @@ for ii, row in enumerate(bright_merge_obs):
     
     vonvmax = vol / maxv
     
-    derived.append([tid, ros, wght, vol, Mrh, maxz, maxv, vonvmax])
+    derived.append([tid, ros, wght, vol, Mrh, maxz, 1. / maxv, vonvmax])
 
     if (ii % 100) == 0:
         runtime = (time.time()-start) / 60.
@@ -102,7 +102,7 @@ for ii, row in enumerate(bright_merge_obs):
         
         print('{:.2f} complete after {:.2f} minutes.'.format(percentage_complete, runtime))
         
-# derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGSZWEIGHT', 'VOLUME', 'MRH', 'ZMAX', 'VMAX', 'VONVMAX'])
+# derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGSZWEIGHT', 'VOLUME', 'MRH', 'ZMAX', 'IVMAX', 'VONVMAX'])
 # derived.pprint(max_width=-1)
 # derived.write('{}bright_sv3_derived.fits'.format(odir), format='fits', overwrite=True)
 
