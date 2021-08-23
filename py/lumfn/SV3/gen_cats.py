@@ -24,10 +24,13 @@ from   distances         import comoving_distance, comoving_volume
 from   ajs_kcorr         import ajs_kcorr
 from   abs_mag           import abs_mag
 from   vmax              import zmax, vmax
+from   ref_gmr           import reference_gmr
 from   LSS.SV3.cattools  import tile2rosette  
+from   params            import params
 
-
-version          = 0.1
+version          = 0.2
+todisk           = False
+dryrun           = True
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 # See dedicated notebook. 
@@ -64,7 +67,8 @@ bright_merge['GMR_DRED']            = bright_merge['GMAG_DRED'] - bright_merge['
 # Assignment (to a working fiber) success.  
 bright_merge['BGS_A_SUCCESS']       = (bright_merge['ZWARN'].data != 999999) & (bright_merge['FIBERSTATUS'] == 0) 
 
-bright_merge.write('{}bright_reachable_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
+if todisk:
+    bright_merge.write('{}bright_reachable_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
 
 bright_merge['BGS_A_WEIGHT']        = 1. / asuccess(bright_merge['RMAG_DRED'])
 
@@ -73,62 +77,68 @@ bright_merge['BGS_A_WEIGHT']        = 1. / asuccess(bright_merge['RMAG_DRED'])
 # 300 km/s lower limit for stars; upper limit due to extrapolation of k correction.
 bright_merge_obs                    = bright_merge[bright_merge['BGS_A_SUCCESS'] & (bright_merge['PRIORITY'] > 3000.)]
 
-del bright_merge_obs['BGS_A_SUCCESS']
-
 # (bright_merge_obs['Z'] >= 0.001) & (bright_merge_obs['Z'] <= 0.55)
 bright_merge_obs['BGS_Z_SUCCESS']   = (bright_merge_obs['ZWARN'] == 0) & (bright_merge_obs['DELTACHI2'] > 40.)
 bright_merge_obs['BGS_Z_WEIGHT']    = 1. / zsuccess(bright_merge_obs['FIBER_RMAG'])
 
-bright_merge_obs.write('{}bright_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
+if todisk:
+    bright_merge_obs.write('{}bright_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
 
 ## 
-derived     = []
+derived      = []
 
-start       = time.time()
+start        = time.time()
 
-kcorrector  = ajs_kcorr()
+kcorrector   = ajs_kcorr()
 
 for ii, row in enumerate(bright_merge_obs):
-    tid     = row['TARGETID']
+    tid      = row['TARGETID']
 
-    ros     = tile2rosette(row['ZTILEID'])
+    ros      = tile2rosette(row['ZTILEID'])
     
-    rmag    = row['RMAG_DRED']
-    gmr     = row['GMR_DRED']
-    zz      = row['Z']
+    rmag     = row['RMAG_DRED']
+    gmr      = row['GMR_DRED']
+    zz       = row['Z']
 
-    wght    = row['BGS_Z_WEIGHT']
+    #  See dedicated fsky calc. notebook. 
+    vol      = comoving_volume(0.001, zz, fsky=fsky)
+    
+    zwght    = row['BGS_Z_WEIGHT']
+    awght    = row['BGS_A_WEIGHT']
 
-    try:
-        #  See dedicated fsky calc. notebook.  
-        vol     = comoving_volume(0.001, zz, fsky=fsky)
-    
-        Mrh     = abs_mag(kcorrector, rmag, gmr, zz).item()
-    
-        maxz    = zmax(kcorrector, 19.5, Mrh, gmr, zz)
-    
-        maxv    = vmax(kcorrector, 19.5, Mrh, gmr, zz, min_z=0.001, fsky=fsky, max_z=maxz)        
-    
-        vonvmax = vol / maxv
-    
-        derived.append([tid, ros, wght, vol, Mrh, maxz, 1. / maxv, vonvmax])
+    zsuccess = row['BGS_Z_SUCCESS']
 
-    except:
-        # stars?
-        derived.append([tid, ros, wght, vol, -99., -99., -99., -99.])
+    void     = [tid, ros, zwght, awght, vol, -99., -99., -99., -99., -99.]
+
+    if zsuccess:
+            Mrh     = abs_mag(kcorrector, rmag, gmr, zz).item()
+
+            ref_gmr = reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
+            
+            maxz    = zmax(kcorrector, 19.5, Mrh, gmr, zz, ref_gmr=ref_gmr)
+    
+            maxv    = vmax(kcorrector, 19.5, Mrh, gmr, zz, min_z=0.001, fsky=fsky, max_z=maxz)        
+    
+            vonvmax = (vol / maxv)
+    
+            derived.append([tid, ros, zwght, awght, vol, Mrh, ref_gmr, maxz, 1. / maxv, vonvmax])
+    else:
+        derived.append(void)
         
     if (ii % 100) == 0:
         runtime = (time.time()-start) / 60.
         
         percentage_complete = 100. * ii / len(bright_merge_obs)
-
-        if runtime > 1.:
+        
+        if dryrun & (runtime > 1.0):
             break
         
         print('{:.2f} complete after {:.2f} minutes.'.format(percentage_complete, runtime))
         
-derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGS_Z_WEIGHT', 'VOLUME', 'MRH', 'ZMAX', 'IVMAX', 'VONVMAX'])
+derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGS_Z_WEIGHT', 'BGS_A_WEIGHT', 'VOLUME', 'MRH', 'REF_GMR', 'ZMAX', 'IVMAX', 'VONVMAX'])
 derived.pprint(max_width=-1)
-derived.write('{}bright_sv3_derived_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
+
+if todisk:
+    derived.write('{}bright_sv3_derived_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
 
 print('Finished writing to' + ' {}bright_sv3_derived_v{:.1f}.fits'.format(odir, version))

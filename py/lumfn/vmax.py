@@ -9,8 +9,9 @@ from   scipy.optimize    import brentq, minimize
 from   params            import params
 from   ref_gmr           import reference_gmr
 
-def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lolim=0.01, hilim=0.7, distance_only=False):
-    ref_gmr = reference_gmr(kcorr, obs_gmr, redshift, zref=ref_z)
+def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lolim=0.01, hilim=0.7, ref_gmr=None, distance_only=False):
+    if ref_gmr == None:
+        ref_gmr = reference_gmr(kcorr, obs_gmr, redshift, zref=ref_z)
     
     def diff(zzmax):
         # Brent relies on sign difference above and below zero point.
@@ -31,7 +32,7 @@ def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lo
         
         # If sufficiently bright, not fainter than rlim at hilim.
         # Brent method fails, requires sign change across boundaries. 
-        result = minimize(absdiff, hilim, method='Nelder-Mead')
+        result = minimize(absdiff, redshift, method='Nelder-Mead')
         
         if result.success:
             result = result.x[0]
