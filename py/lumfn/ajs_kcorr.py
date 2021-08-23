@@ -99,8 +99,11 @@ class ajs_kcorr():
         return res
 
 
-    def __eval(self, ref_gmr, zz, band, ref_z=0.0, ecorr=True):
-        res           = self.ref_eval(ref_gmr, zz, band)
+    def __eval(self, ref_gmr, zz, band, ref_z=0.0, res=None, ecorr=True):
+        # Applies reference z shift.
+        if res == None:
+            res       = self.ref_eval(ref_gmr, zz, band)
+            
         shift         = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
         res          -= shift
 

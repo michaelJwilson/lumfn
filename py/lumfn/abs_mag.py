@@ -9,7 +9,7 @@ from   ajs_kcorr import ajs_kcorr
 from   params    import params
 
 from   tmr_kcorr import tmr_kcorr
-from   ref_gmr   import reference_gmr
+from   ref_gmr   import one_reference_gmr
 
 
 def abs_mag(kcorr, rpetro, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=None, distance_only=False):
@@ -17,7 +17,7 @@ def abs_mag(kcorr, rpetro, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr
      mu  = dist_mod(chi)
 
      if ref_gmr == None:
-          ref_gmr = reference_gmr(kcorr, obs_gmr, zz, zref=ref_z)
+          ref_gmr = one_reference_gmr(kcorr, obs_gmr, zz, zref=ref_z)
      
      # Note: tmr references to z=0.0; ajs to z=0.1;
      kk  = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z)
@@ -36,7 +36,7 @@ def app_mag(kcorr, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=Non
      mu       = dist_mod(chi)
 
      if ref_gmr == None:
-          ref_gmr = reference_gmr(kcorr, obs_gmr, zz, zref=ref_z)
+          ref_gmr = one_reference_gmr(kcorr, obs_gmr, zz, zref=ref_z)
 
      kk       = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z)
 
@@ -59,7 +59,7 @@ if __name__ == '__main__':
      MM      = abs_mag(x, rp, obs_gmr, zz,  band='r')
      
      for zz in np.arange(0.01, 0.5, 0.025):
-          ref_gmr = reference_gmr(x, obs_gmr, zz, zref=params['ref_z'])
+          ref_gmr = one_reference_gmr(x, obs_gmr, zz, zref=params['ref_z'])
           mm      = app_mag(x, Mh, obs_gmr, zz, band='r').item()
 
           pl.plot(zz, ref_gmr, marker=',', lw=0.0)

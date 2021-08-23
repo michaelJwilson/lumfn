@@ -24,13 +24,14 @@ from   distances         import comoving_distance, comoving_volume
 from   ajs_kcorr         import ajs_kcorr
 from   abs_mag           import abs_mag
 from   vmax              import zmax, vmax
-from   ref_gmr           import reference_gmr
+from   ref_gmr           import one_reference_gmr
 from   LSS.SV3.cattools  import tile2rosette  
 from   params            import params
 
 version          = 0.2
-todisk           = False
+todisk           = True
 dryrun           = True
+runtime_lim      = 1.0 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 # See dedicated notebook. 
@@ -108,20 +109,22 @@ for ii, row in enumerate(bright_merge_obs):
 
     zsuccess = row['BGS_Z_SUCCESS']
 
-    void     = [tid, ros, zwght, awght, vol, -99., -99., -99., -99., -99.]
+    void     = [tid, ros, zsuccess, zwght, awght, -99., -99., -99., -99., -99., -99., -99.]
 
     if zsuccess:
             Mrh     = abs_mag(kcorrector, rmag, gmr, zz).item()
 
-            ref_gmr = reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
+            org_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=kcorrector.z0, ecorr=False)
             
+            ref_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
+
             maxz    = zmax(kcorrector, 19.5, Mrh, gmr, zz, ref_gmr=ref_gmr)
     
             maxv    = vmax(kcorrector, 19.5, Mrh, gmr, zz, min_z=0.001, fsky=fsky, max_z=maxz)        
     
             vonvmax = (vol / maxv)
     
-            derived.append([tid, ros, zwght, awght, vol, Mrh, ref_gmr, maxz, 1. / maxv, vonvmax])
+            derived.append([tid, ros, zsuccess, zwght, awght, vol, Mrh, org_gmr, ref_gmr, maxz, 1. / maxv, vonvmax])
     else:
         derived.append(void)
         
@@ -130,12 +133,12 @@ for ii, row in enumerate(bright_merge_obs):
         
         percentage_complete = 100. * ii / len(bright_merge_obs)
         
-        if dryrun & (runtime > 1.0):
+        if dryrun & (runtime > runtime_lim):
             break
         
         print('{:.2f} complete after {:.2f} minutes.'.format(percentage_complete, runtime))
         
-derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGS_Z_WEIGHT', 'BGS_A_WEIGHT', 'VOLUME', 'MRH', 'REF_GMR', 'ZMAX', 'IVMAX', 'VONVMAX'])
+derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGS_Z_SUCCESS', 'BGS_Z_WEIGHT', 'BGS_A_WEIGHT', 'VOLUME', 'MRH', 'REF_GMR0P1', 'REF_GMR0P0', 'ZMAX', 'IVMAX', 'VONVMAX'])
 derived.pprint(max_width=-1)
 
 if todisk:

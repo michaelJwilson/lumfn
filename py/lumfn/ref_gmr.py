@@ -10,12 +10,12 @@ from   tmr_kcorr      import tmr_kcorr
 from   scipy.optimize import brentq, minimize
 from   params         import params
 
-def _reference_gmr(kcorr, gmr, z, zref=params['ref_z']):
+def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
      # Calling signature: ajs_kcorr.eval(self, ref_gmr, zz, band, ref_z=0.1)
      def diff(x):
           # Here, x is the ref_color to be solved for. 
-          obs  = x - kcorr.eval(x, zref, band='g', ref_z=zref) + kcorr.eval(x, zref, band='r', ref_z=zref)
-          obs += kcorr.eval(x, z, band='g', ref_z=zref) - kcorr.eval(x, z, band='r', ref_z=zref)
+          obs  = x - kcorr.eval(x, zref, band='g', ref_z=zref, ecorr=ecorr) + kcorr.eval(x, zref, band='r', ref_z=zref, ecorr=ecorr)
+          obs += kcorr.eval(x, z, band='g', ref_z=zref, ecorr=ecorr) - kcorr.eval(x, z, band='r', ref_z=zref, ecorr=ecorr)
 
           return (gmr - obs)
 
@@ -40,7 +40,7 @@ def _reference_gmr(kcorr, gmr, z, zref=params['ref_z']):
 
      return  result
 
-def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z']):
+def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z'], ecorr=True):
      result = []
 
      zs     = np.atleast_1d(np.array(zs, copy=True))
@@ -50,7 +50,7 @@ def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z']):
           row = []
           
           for zz in zs:
-               row.append(_reference_gmr(kcorr, gmr, zz, zref=params['ref_z']))
+               row.append(one_reference_gmr(kcorr, gmr, zz, zref=params['ref_z'], ecorr=ecorr))
 
           result.append(row)
 
