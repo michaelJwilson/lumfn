@@ -109,7 +109,7 @@ class ajs_kcorr():
 
         if ecorr & (ref_z == 0.0):
             tt        = 'blue' if ref_gmr <= params['rf_gmr_redblue'] else 'red'
-            res      += tmr_ecorr(zz, tt='gray', zref=ref_z, band=band)
+            res      += tmr_ecorr(zz, tt=tt, zref=ref_z, band=band)
 
         elif ecorr & (ref_z != 0.0):
             raise ValueError('E correction only defined for a reference z of 0.0;')
