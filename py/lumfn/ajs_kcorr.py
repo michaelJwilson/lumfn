@@ -6,6 +6,7 @@ from   astropy.table     import Table
 from   scipy.interpolate import interp1d
 from   scipy.stats       import linregress
 from   tmr_ecorr         import tmr_ecorr
+from   params            import params
 
 # See: https://arxiv.org/pdf/1409.4681.pdf
 #      https://arxiv.org/pdf/1701.06581.pdf

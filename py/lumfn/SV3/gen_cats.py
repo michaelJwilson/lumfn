@@ -27,11 +27,12 @@ from   vmax              import zmax, vmax
 from   ref_gmr           import one_reference_gmr
 from   LSS.SV3.cattools  import tile2rosette  
 from   params            import params
+from   define_sample     import define_sample
 
 version          = 0.2
 todisk           = True
-dryrun           = True
-runtime_lim      = 10.0 
+dryrun           = False
+runtime_lim      = 10.0
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 # See dedicated notebook. 
@@ -79,8 +80,10 @@ bright_merge['BGS_A_WEIGHT']        = 1. / asuccess(bright_merge['RMAG_DRED'])
 bright_merge_obs                    = bright_merge[bright_merge['BGS_A_SUCCESS'] & (bright_merge['PRIORITY'] > 3000.)]
 
 # (bright_merge_obs['Z'] >= 0.001) & (bright_merge_obs['Z'] <= 0.55)
-bright_merge_obs['BGS_Z_SUCCESS']   = (bright_merge_obs['ZWARN'] == 0) & (bright_merge_obs['DELTACHI2'] > 40.)
-bright_merge_obs['BGS_Z_WEIGHT']    = 1. / zsuccess(bright_merge_obs['FIBER_RMAG'])
+# 
+bright_merge_obs['BGS_Z_SUCCESS']     = (bright_merge_obs['ZWARN'] == 0) & (bright_merge_obs['DELTACHI2'] > 40.)
+# bright_merge_obs['BGS_Z_SUCCESS']  &= (bright_merge_obs['ZTILEID'] > -1)
+bright_merge_obs['BGS_Z_WEIGHT']      = 1. / zsuccess(bright_merge_obs['FIBER_RMAG'])
 
 if todisk:
     bright_merge_obs.write('{}bright_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
@@ -91,6 +94,8 @@ derived      = []
 start        = time.time()
 
 kcorrector   = ajs_kcorr()
+
+fails        = []
 
 for ii, row in enumerate(bright_merge_obs):
     tid      = row['TARGETID']
@@ -109,9 +114,12 @@ for ii, row in enumerate(bright_merge_obs):
 
     zsuccess = row['BGS_Z_SUCCESS']
 
-    void     = [tid, ros, zsuccess, zwght, awght, -99., -99., -99., -99., -99., -99., -99.]
+    insample = define_sample(row, vmin=params['vmin'])
+    
+    void     = [tid, ros, zsuccess, False, zwght, awght, -99., -99., -99., -99., -99., -99., -99.]
 
-    if zsuccess:
+    if zsuccess & insample:
+        try:
             Mrh     = abs_mag(kcorrector, rmag, gmr, zz).item()
 
             org_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=kcorrector.z0, ecorr=False)
@@ -123,8 +131,13 @@ for ii, row in enumerate(bright_merge_obs):
             maxv    = vmax(kcorrector, 19.5, Mrh, gmr, zz, min_z=0.001, fsky=fsky, max_z=maxz)        
     
             vonvmax = (vol / maxv)
-    
-            derived.append([tid, ros, zsuccess, zwght, awght, vol, Mrh, org_gmr, ref_gmr, maxz, 1. / maxv, vonvmax])
+            
+            derived.append([tid, ros, zsuccess, insample, zwght, awght, vol, Mrh, org_gmr, ref_gmr, maxz, 1. / maxv, vonvmax])
+
+        except:
+            fails.append(tid)
+
+            derived.append(void)
     else:
         derived.append(void)
         
@@ -137,8 +150,13 @@ for ii, row in enumerate(bright_merge_obs):
             break
         
         print('{:.2f} complete after {:.2f} minutes.'.format(percentage_complete, runtime))
+
+fails   = np.array(fails)
+
+if todisk:
+    np.savetxt('{}bright_sv3_derivedfails_v{:.1f}.txt'.format(odir, version), fails, fmt='%d')
         
-derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGS_Z_SUCCESS', 'BGS_Z_WEIGHT', 'BGS_A_WEIGHT', 'VOLUME', 'MRH', 'REF_GMR0P1', 'REF_GMR0P0', 'ZMAX', 'IVMAX', 'VONVMAX'])
+derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGS_Z_SUCCESS', 'INSAMPLE', 'BGS_Z_WEIGHT', 'BGS_A_WEIGHT', 'VOLUME', 'MRH', 'REF_GMR0P1', 'REF_GMR0P0', 'ZMAX', 'IVMAX', 'VONVMAX'])
 derived.pprint(max_width=-1)
 
 if todisk:
