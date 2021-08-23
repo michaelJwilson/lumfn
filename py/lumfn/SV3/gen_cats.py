@@ -31,7 +31,7 @@ from   params            import params
 version          = 0.2
 todisk           = True
 dryrun           = True
-runtime_lim      = 1.0 
+runtime_lim      = 10.0 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 # See dedicated notebook. 

@@ -98,17 +98,24 @@ class ajs_kcorr():
 
         return res
 
-
     def __eval(self, ref_gmr, zz, band, ref_z=0.0, res=None, ecorr=True):
         # Applies reference z shift.
         if res == None:
             res       = self.ref_eval(ref_gmr, zz, band)
-            
-        shift         = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
-        res          -= shift
 
-        if ecorr:
+        if ref_z != self.z0:
+            shift     = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
+            res      -= shift
+
+        if ecorr & (ref_z == 0.0):
+            tt        = 'blue' if ref_gmr <= params['rf_gmr_redblue'] else 'red'
             res      += tmr_ecorr(zz, tt='gray', zref=ref_z, band=band)
+
+        elif ecorr & (ref_z != 0.0):
+            raise ValueError('E correction only defined for a reference z of 0.0;')
+
+        else:
+            pass
 
         return  res
     

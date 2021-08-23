@@ -10,7 +10,7 @@ from   tmr_kcorr      import tmr_kcorr
 from   scipy.optimize import brentq, minimize
 from   params         import params
 
-def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
+def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True, tid=None):
      # Calling signature: ajs_kcorr.eval(self, ref_gmr, zz, band, ref_z=0.1)
      def diff(x):
           # Here, x is the ref_color to be solved for. 
@@ -28,12 +28,16 @@ def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
 
      except ValueError as VE:
         # Brent method fails, requires sign change across boundaries.                                                                                                                                                      
-        result = minimize(absdiff, 0.5)
+        result = minimize(absdiff, 0.75)
 
         if result.success:
             result = result.x[0]
 
         else:
+            if tid != None:
+                 print('---------  {}  ---------'.format(tid))
+                 print(z, gmr)
+             
             print(result.message)
 
             raise RuntimeError()
