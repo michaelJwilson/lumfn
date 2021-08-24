@@ -28,15 +28,14 @@ from   ref_gmr           import one_reference_gmr
 from   LSS.SV3.cattools  import tile2rosette  
 from   params            import params
 from   define_sample     import define_sample
+from   zmin              import zmin
+from   sv3_params        import sv3_params
 
 version          = 0.2
 todisk           = True
 dryrun           = False
 runtime_lim      = 10.0
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
-
-# See dedicated notebook. 
-fsky             = 0.00413169
 
 print(odir)
 
@@ -72,12 +71,12 @@ bright_merge['BGS_A_SUCCESS']       = (bright_merge['ZWARN'].data != 999999) & (
 if todisk:
     bright_merge.write('{}bright_reachable_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
 
-bright_merge['BGS_A_WEIGHT']        = 1. / asuccess(bright_merge['RMAG_DRED'])
+bright_merge['BGS_A_WEIGHT']          = 1. / asuccess(bright_merge['RMAG_DRED'])
 
 # Limit to spectro. observations on a working fiber.
 # Limit to first observation.  Subsequent observations reassigned on the basis of a bad first redshift.  Check: is 3000 true only of dark time?  Doubtful. 
 # 300 km/s lower limit for stars; upper limit due to extrapolation of k correction.
-bright_merge_obs                    = bright_merge[bright_merge['BGS_A_SUCCESS'] & (bright_merge['PRIORITY'] > 3000.)]
+bright_merge_obs                      = bright_merge[bright_merge['BGS_A_SUCCESS'] & (bright_merge['PRIORITY'] > 3000.)]
 
 # (bright_merge_obs['Z'] >= 0.001) & (bright_merge_obs['Z'] <= 0.55)
 # 
@@ -107,7 +106,7 @@ for ii, row in enumerate(bright_merge_obs):
     zz       = row['Z']
 
     #  See dedicated fsky calc. notebook. 
-    vol      = comoving_volume(0.001, zz, fsky=fsky)
+    vol      = comoving_volume(zmin(params['vmin']), zz, fsky=sv3_params['fsky'])
     
     zwght    = row['BGS_Z_WEIGHT']
     awght    = row['BGS_A_WEIGHT']
