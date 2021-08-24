@@ -13,7 +13,7 @@ from   scipy.stats       import linregress
 figure(figsize=(6, 4), dpi=200)
 
 # left merge of spec. to reachable targets.
-bright   = Table.read('/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/bright_reachable_sv3.fits')
+bright   = Table.read('/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/bright_reachable_sv3_v0.0.fits')
 bright   = bright['TARGETID', 'RMAG_DRED', 'BGS_A_SUCCESS']
 
 assigned = bright['BGS_A_SUCCESS'] > 0

@@ -11,7 +11,7 @@ from   zsuccess          import zsuccess
 
 figure(figsize=(6, 4), dpi=200)
 
-bright = Table.read('/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/bright_sv3.fits')
+bright = Table.read('/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/bright_sv3_v0.0.fits')
 
 print(bright.dtype.names)
 
