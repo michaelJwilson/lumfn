@@ -49,22 +49,35 @@ def app_mag(kcorr, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=Non
 if __name__ == '__main__':
      x       = ajs_kcorr()  # [ajs_kcorr, tmr_kcorr]
 
-     zz      =   0.4
+     zz      =   0.2
      
-     rp      =  19.8
+     rp      =  19.0
      Mh      = -21.0
 
-     obs_gmr = 0.500 
+     band    =    'r'
+     
+     obs_gmr = 1.000 
      
      MM      = abs_mag(x, rp, obs_gmr, zz,  band='r')
      
-     for zz in np.arange(0.01, 0.5, 0.025):
+     for zz in np.arange(0.01, 0.5, 0.005):
+          chi     = comoving_distance(zz)
+          mu      = dist_mod(chi)
+
           ref_gmr = one_reference_gmr(x, obs_gmr, zz, zref=params['ref_z'])
+
+          kk      = x.eval(ref_gmr, zz, band=band, ref_z=params['ref_z'], ecorr=False)
+          kkE     = x.eval(ref_gmr, zz, band=band, ref_z=params['ref_z'], ecorr=True)
+
           mm      = app_mag(x, Mh, obs_gmr, zz, band='r').item()
 
-          pl.plot(zz, ref_gmr, marker=',', lw=0.0)
+          pl.plot(zz, mu + kk,  marker='.', lw=0.0, c='k')
+          pl.plot(zz, mu + kkE, marker='.', lw=0.0, c='c')
+          
           # pl.plot(zz, mm, marker=',', lw=0.0)
-     
+
+     pl.axvline(0.25, lw=0.25, c='k')
+          
      # pl.plot(zs, MM)
      # pl.xlabel('z')
      # pl.ylabel('M')
@@ -73,6 +86,6 @@ if __name__ == '__main__':
      # pl.clf()
      # pl.plot(zs, mm)
      pl.xlabel('z')
-     pl.ylabel('ref. $g-r$')
+     pl.ylabel('$\mu + k&E$')
      # pl.ylabel('r')
      pl.show()

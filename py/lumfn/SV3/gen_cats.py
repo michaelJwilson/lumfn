@@ -31,10 +31,10 @@ from   define_sample     import define_sample
 from   zmin              import zmin
 from   sv3_params        import sv3_params
 
-version          = 0.2
-todisk           = True
-dryrun           = False
-runtime_lim      = 10.0
+version          = 0.3
+todisk           = False
+dryrun           = True
+runtime_lim      = 0.1
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 print(odir)
@@ -51,7 +51,7 @@ bright_merge     = Table.read('/global/cfs/cdirs/desi/survey/catalogs/SV3/LSS/da
 bright_merge     = bright_merge[(sv3_targetmask.bgs_mask['BGS_BRIGHT'] & bright_merge['SV3_BGS_TARGET']) != 0]
 
 # Add fluxes & colors.
-bright_merge                        = join(bright_merge, bgs_bright['FIBERFLUX_R', 'FLUX_G', 'FLUX_R', 'MW_TRANSMISSION_G', 'MW_TRANSMISSION_R', 'TARGETID'], join_type='left', keys='TARGETID')
+bright_merge                        = join(bright_merge, bgs_bright['FIBERFLUX_R', 'FLUX_G', 'FLUX_R', 'MW_TRANSMISSION_G', 'MW_TRANSMISSION_R', 'TARGETID', 'PHOTSYS', 'REF_CAT'], join_type='left', keys='TARGETID')
 
 bright_merge['GMAG']                = 22.5 - 2.5 * np.log10(bright_merge['FLUX_G'])
 bright_merge['GMAG_DRED']           = 22.5 - 2.5 * np.log10(bright_merge['FLUX_G'] / bright_merge['MW_TRANSMISSION_G'])
@@ -68,6 +68,8 @@ bright_merge['GMR_DRED']            = bright_merge['GMAG_DRED'] - bright_merge['
 # Assignment (to a working fiber) success.  
 bright_merge['BGS_A_SUCCESS']       = (bright_merge['ZWARN'].data != 999999) & (bright_merge['FIBERSTATUS'] == 0) 
 
+bright_merge.pprint()
+
 if todisk:
     bright_merge.write('{}bright_reachable_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
 
@@ -83,6 +85,8 @@ bright_merge_obs                      = bright_merge[bright_merge['BGS_A_SUCCESS
 bright_merge_obs['BGS_Z_SUCCESS']     = (bright_merge_obs['ZWARN'] == 0) & (bright_merge_obs['DELTACHI2'] > 40.)
 # bright_merge_obs['BGS_Z_SUCCESS']  &= (bright_merge_obs['ZTILEID'] > -1)
 bright_merge_obs['BGS_Z_WEIGHT']      = 1. / zsuccess(bright_merge_obs['FIBER_RMAG'])
+
+bright_merge_obs.pprint()
 
 if todisk:
     bright_merge_obs.write('{}bright_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
@@ -111,9 +115,10 @@ for ii, row in enumerate(bright_merge_obs):
     zwght    = row['BGS_Z_WEIGHT']
     awght    = row['BGS_A_WEIGHT']
 
+    
     zsuccess = row['BGS_Z_SUCCESS']
 
-    insample = define_sample(row, vmin=params['vmin'])
+    insample = define_sample(row)
     
     void     = [tid, ros, zsuccess, False, zwght, awght, -99., -99., -99., -99., -99., -99., -99.]
 
@@ -125,17 +130,20 @@ for ii, row in enumerate(bright_merge_obs):
             
             ref_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
 
-            maxz    = zmax(kcorrector, 19.5, Mrh, gmr, zz, ref_gmr=ref_gmr)
+            maxz    = zmax(kcorrector, params['rlim'], Mrh, gmr, zz, ref_gmr=ref_gmr)
     
-            maxv    = vmax(kcorrector, 19.5, Mrh, gmr, zz, min_z=0.001, fsky=fsky, max_z=maxz)        
+            maxv    = vmax(kcorrector, params['rlim'], Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=sv3_params['fsky'], max_z=maxz)        
     
             vonvmax = (vol / maxv)
             
             derived.append([tid, ros, zsuccess, insample, zwght, awght, vol, Mrh, org_gmr, ref_gmr, maxz, 1. / maxv, vonvmax])
 
-        except:
+        except Exception as E:
+            print('----  Exception  ----')
+            print(E)
+            print('----')
+            
             fails.append(tid)
-
             derived.append(void)
     else:
         derived.append(void)

@@ -10,7 +10,7 @@ from   tmr_kcorr      import tmr_kcorr
 from   scipy.optimize import brentq, minimize
 from   params         import params
 
-def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True, tid=None):
+def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
      # Calling signature: ajs_kcorr.eval(self, ref_gmr, zz, band, ref_z=0.1)
      def diff(x):
           # Here, x is the ref_color to be solved for. 
@@ -33,11 +33,7 @@ def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True, tid=None)
         if result.success:
             result = result.x[0]
 
-        else:
-            if tid != None:
-                 print('---------  {}  ---------'.format(tid))
-                 print(z, gmr)
-             
+        else:             
             print(result.message)
 
             raise RuntimeError()
@@ -62,11 +58,20 @@ def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z'], ecorr=True):
 
 
 if __name__ == '__main__':
-     kcorr   = ajs_kcorr()
+     x       = ajs_kcorr()  # [ajs_kcorr, tmr_kcorr]                                                                                                                                                           
+     zz      =   0.2
 
-     zs      = np.arange(0.1, 0.4, 0.1)
-     gmrs    = np.arange(1.25, 1.75, 0.25) 
+     rp      =  19.0
+     band    =    'r'
+
+     obs_gmr = 1.000
+
+     for zz in np.arange(0.01, 0.5, 0.005):
+          ref_gmr = one_reference_gmr(x, obs_gmr, zz, zref=params['ref_z'])
+          
+          pl.plot(zz, ref_gmr, marker='.', c='k')
+
+     pl.xlabel(r'$z$')
+     pl.ylabel(r'ref. $(g-r)$')
      
-     ref_gmr = reference_gmr(kcorr, gmrs, zs, zref=0.1)
-
-     print(ref_gmr)
+     pl.show()

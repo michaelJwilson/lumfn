@@ -99,7 +99,7 @@ class ajs_kcorr():
 
         return res
 
-    def __eval(self, ref_gmr, zz, band, ref_z=0.0, res=None, ecorr=True):
+    def __eval(self, ref_gmr, zz, band, ref_z=params['ref_z'], res=None, ecorr=True):
         # Applies reference z shift.
         if res == None:
             res       = self.ref_eval(ref_gmr, zz, band)
@@ -109,11 +109,11 @@ class ajs_kcorr():
             res      -= shift
 
         if ecorr & (ref_z == 0.0):
-            tt        = 'blue' if ref_gmr <= params['rf_gmr_redblue'] else 'red'
+            tt        = 'blue' if (ref_gmr <= params['rf_gmr_redblue']) else 'red'
             res      += tmr_ecorr(zz, tt=tt, zref=ref_z, band=band)
 
         elif ecorr & (ref_z != 0.0):
-            raise ValueError('E correction only defined for a reference z of 0.0;')
+            raise ValueError('E-correction only defined for a reference z of 0.0;')
 
         else:
             pass
@@ -122,34 +122,42 @@ class ajs_kcorr():
     
 if __name__ == '__main__':
     import pylab as pl
-        
-    x    = ajs_kcorr()
 
-    gmrs = [0.130634, 0.298124, 0.443336, 0.603434, 0.784644, 0.933226, 1.0673]
-    zs   = np.arange(0.01,0.801,0.01)
+    
+    x         = ajs_kcorr()
+
+    ref_gmrs  = [0.130634, 0.298124, 0.443336, 0.603434, 0.784644, 0.933226, 1.0673]
+    zs        = np.arange(0.01,0.801,0.01)
 
     fig, axes = plt.subplots(1,2, figsize=(15,5))
 
-    colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
+    colors    = plt.rcParams['axes.prop_cycle'].by_key()['color']
     
-    for gmr, color in zip(gmrs, colors):
-        gks = x._eval(gmr, zs, 'g')
-        rks = x._eval(gmr, zs, 'r')
+    for ref_gmr, color in zip(ref_gmrs, colors):
+        # compare _eval to ref_eval, compares +- extrapolation.   
+        gks = x._eval(ref_gmr, zs, 'g')
+        rks = x._eval(ref_gmr, zs, 'r')
         
         axes[0].plot(zs, rks, label='', alpha=0.25, c=color)
         axes[1].plot(zs, gks, label='', alpha=0.25, c=color)
 
-        gks = x.ref_eval(gmr, zs, 'g')
-        rks = x.ref_eval(gmr, zs, 'r')
+        gks = x.ref_eval(ref_gmr, zs, 'g')
+        rks = x.ref_eval(ref_gmr, zs, 'r')
+
+        axes[0].plot(zs, rks, '--', c=color, alpha=0.25)
+        axes[1].plot(zs, gks, '--', c=color, alpha=0.25)
+
+        gks = x.eval(ref_gmr, zs, 'g', ref_z=0.00, ecorr=False)
+        rks = x.eval(ref_gmr, zs, 'r', ref_z=0.00, ecorr=False)
 
         axes[0].plot(zs, rks, '--', c=color)
         axes[1].plot(zs, gks, '--', c=color)
 
-        gks = x.eval(gmr, zs, 'g', ref_z=0.01)
-        rks = x.eval(gmr, zs, 'r', ref_z=0.01)
+        gks = x.eval(ref_gmr, zs, 'g', ref_z=0.00, ecorr=True)
+        rks = x.eval(ref_gmr, zs, 'r', ref_z=0.00, ecorr=True)
 
-        axes[0].plot(zs, rks, label=r"$(g-r)=%.3f$" % gmr, c=color)
-        axes[1].plot(zs, gks, label=r"$(g-r)=%.3f$" % gmr, c=color)
+        axes[0].plot(zs, rks, c=color, label='ref. (g-r)={:.2f}'.format(ref_gmr))
+        axes[1].plot(zs, gks, c=color)
 
     axes[0].set_ylabel(r"$^{0.1}K_r(z)$")
     axes[1].set_ylabel(r"$^{0.1}K_g(z)$")
