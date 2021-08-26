@@ -32,9 +32,9 @@ from   zmin              import zmin
 from   sv3_params        import sv3_params
 
 version          = 0.3
-todisk           = False
-dryrun           = True
-runtime_lim      = 0.1
+todisk           = True
+dryrun           = False
+runtime_lim      = 0.1 # only if dryrun. 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 print(odir)
@@ -99,10 +99,12 @@ start        = time.time()
 kcorrector   = ajs_kcorr()
 
 fails        = []
+tids         = []
 
 for ii, row in enumerate(bright_merge_obs):
     tid      = row['TARGETID']
-
+    tids.append(tid)
+    
     ros      = tile2rosette(row['ZTILEID'])
     
     rmag     = row['RMAG_DRED']
@@ -115,7 +117,6 @@ for ii, row in enumerate(bright_merge_obs):
     zwght    = row['BGS_Z_WEIGHT']
     awght    = row['BGS_A_WEIGHT']
 
-    
     zsuccess = row['BGS_Z_SUCCESS']
 
     insample = define_sample(row)
@@ -123,7 +124,7 @@ for ii, row in enumerate(bright_merge_obs):
     void     = [tid, ros, zsuccess, False, zwght, awght, -99., -99., -99., -99., -99., -99., -99.]
 
     if zsuccess & insample:
-        try:
+        try:            
             Mrh     = abs_mag(kcorrector, rmag, gmr, zz).item()
 
             org_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=kcorrector.z0, ecorr=False)
@@ -164,6 +165,18 @@ if todisk:
     np.savetxt('{}bright_sv3_derivedfails_v{:.1f}.txt'.format(odir, version), fails, fmt='%d')
         
 derived = Table(np.array(derived), names=['TARGETID', 'ROSETTE', 'BGS_Z_SUCCESS', 'INSAMPLE', 'BGS_Z_WEIGHT', 'BGS_A_WEIGHT', 'VOLUME', 'MRH', 'REF_GMR0P1', 'REF_GMR0P0', 'ZMAX', 'IVMAX', 'VONVMAX'])
+derived['TARGETID'] = np.array(tids, dtype=np.int64)
+
+print(np.mean(derived['INSAMPLE']))
+
+# Exclude those from sample that had more than one shot at a redshift. 
+exclude = np.array([x == b'BGS|MORE_ZWARN' for x in bright_merge_obs['TARGET_STATE'].data])
+exclude = bright_merge_obs['TARGETID'].data[exclude]
+exclude = np.isin(derived['TARGETID'].data, exclude)
+derived['INSAMPLE'].data[exclude] = 0.0
+
+print('Excluded as repeated-attempt redshifts: {:d}'.format(np.count_nonzero(exclude)))
+
 derived.pprint(max_width=-1)
 
 if todisk:

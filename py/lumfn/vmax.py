@@ -15,6 +15,7 @@ def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lo
     
     def diff(zzmax):
         # Brent relies on sign difference above and below zero point.
+        # Note: ref_gmr must be passed here, otherwise the reference g-r will be recalculated on the basis of Mg, obs_gmr and zzmax.   
         return (app_mag(kcorr, Mh, obs_gmr, zzmax, band=band, ref_z=ref_z, ref_gmr=ref_gmr, distance_only=distance_only).item() - rlim)
 
     def absdiff(zz):
@@ -44,9 +45,9 @@ def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lo
               
     return  result
 
-def vmax(kcorr, rlim, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], min_z=1.e-16, fsky=1.0, max_z=None, distance_only=False):
+def vmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], min_z=1.e-16, fsky=1.0, max_z=None, distance_only=False):
     if max_z == None:
-        max_z = zmax(kcorr, rlim, Mh, obs_gmr, zz, band='r', ref_z=ref_z, distance_only=distance_only)
+        max_z = zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=ref_z, distance_only=distance_only)
     
     return  comoving_volume(min_z, max_z, fsky)
 
