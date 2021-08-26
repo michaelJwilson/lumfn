@@ -30,10 +30,11 @@ from   params            import params
 from   define_sample     import define_sample
 from   zmin              import zmin
 from   sv3_params        import sv3_params
+from   rlim              import rlim
 
-version          = 0.3
-todisk           = True
-dryrun           = False
+version          = 0.4
+todisk           = False
+dryrun           = True
 runtime_lim      = 0.1 # only if dryrun. 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
@@ -111,6 +112,10 @@ for ii, row in enumerate(bright_merge_obs):
     gmr      = row['GMR_DRED']
     zz       = row['Z']
 
+    psys     = row['PHOTSYS']
+
+    print(psys, rlim(psys))
+    
     #  See dedicated fsky calc. notebook. 
     vol      = comoving_volume(zmin(params['vmin']), zz, fsky=sv3_params['fsky'])
     
@@ -131,9 +136,9 @@ for ii, row in enumerate(bright_merge_obs):
             
             ref_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
 
-            maxz    = zmax(kcorrector, params['rlim'], Mrh, gmr, zz, ref_gmr=ref_gmr)
+            maxz    = zmax(kcorrector, rlim(psys), Mrh, gmr, zz, ref_gmr=ref_gmr)
     
-            maxv    = vmax(kcorrector, params['rlim'], Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=sv3_params['fsky'], max_z=maxz)        
+            maxv    = vmax(kcorrector, rlim(psys), Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=sv3_params['fsky'], max_z=maxz)        
     
             vonvmax = (vol / maxv)
             
