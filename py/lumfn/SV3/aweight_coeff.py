@@ -16,16 +16,8 @@ figure(figsize=(6, 4), dpi=200)
 bright   = Table.read('/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/bright_reachable_sv3_v0.0.fits')
 bright   = bright['TARGETID', 'RMAG_DRED', 'BGS_A_SUCCESS']
 
-assigned = bright['BGS_A_SUCCESS'] > 0
-aids     = bright['TARGETID'][assigned]
-
-print(np.mean(bright['BGS_A_SUCCESS']))
-
-bright['BGS_A_SUCCESS'][np.isin(bright['TARGETID'], aids)] = 1.0
-
-print(np.mean(bright['BGS_A_SUCCESS']))
-
-bright = unique(bright, keys='TARGETID', keep='first')
+# One instance per target.  Was it ever assigned encoded by BGS_A_SUCCESS. 
+bright   = unique(bright, keys='TARGETID', keep='first')
 
 bright['RMAG_IDX'] = np.digitize(bright['RMAG_DRED'], bins=np.arange(12.0, 20.0, 0.1))
 
