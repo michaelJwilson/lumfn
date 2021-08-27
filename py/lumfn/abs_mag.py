@@ -12,15 +12,15 @@ from   tmr_kcorr import tmr_kcorr
 from   ref_gmr   import one_reference_gmr
 
 
-def abs_mag(kcorr, rpetro, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=None, distance_only=False):
+def abs_mag(kcorr, rpetro, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=None, distance_only=False, ecorr=True):
      chi = comoving_distance(zz)
-     mu  = dist_mod(chi)
+     mu  = dist_mod(zz)
 
      if ref_gmr == None:
-          ref_gmr = one_reference_gmr(kcorr, obs_gmr, zz, zref=ref_z)
+          ref_gmr = one_reference_gmr(kcorr, obs_gmr, zz, zref=ref_z, ecorr=ecorr)
      
      # Note: tmr references to z=0.0; ajs to z=0.1;
-     kk  = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z)
+     kk  = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z, ecorr=ecorr)
 
      #  Returns:  M - 5log10(h)
      #  See https://arxiv.org/pdf/1409.4681.pdf
@@ -30,15 +30,15 @@ def abs_mag(kcorr, rpetro, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr
      else:
           return rpetro - mu - kk
 
-def app_mag(kcorr, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=None, distance_only=False):     
+def app_mag(kcorr, Mh, obs_gmr, zz, band='r', ref_z=params['ref_z'], ref_gmr=None, distance_only=False, ecorr=True):     
      # Mh \equiv Mr - 5log10(h)
      chi      = comoving_distance(zz)
-     mu       = dist_mod(chi)
+     mu       = dist_mod(zz)
 
      if ref_gmr == None:
-          ref_gmr = one_reference_gmr(kcorr, obs_gmr, zz, zref=ref_z)
+          ref_gmr = one_reference_gmr(kcorr, obs_gmr, zz, zref=ref_z, ecorr=ecorr)
 
-     kk       = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z)
+     kk       = kcorr.eval(ref_gmr, zz, band=band, ref_z=ref_z, ecorr=ecorr)
 
      if distance_only:
           return Mh + mu
@@ -62,7 +62,7 @@ if __name__ == '__main__':
      
      for zz in np.arange(0.01, 0.5, 0.005):
           chi     = comoving_distance(zz)
-          mu      = dist_mod(chi)
+          mu      = dist_mod(zz)
 
           ref_gmr = one_reference_gmr(x, obs_gmr, zz, zref=params['ref_z'])
 

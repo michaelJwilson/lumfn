@@ -1,0 +1,2430 @@
+WARNING: leap-second auto-update failed due to the following exception: RuntimeError('Cache is locked after 5.03 s. This may indicate an astropy bug or that kill -9 was used. If you want to unlock the cache remove the directory /global/homes/m/mjwilson/.astropy/cache/download/py3/lock. Lock claims to be held by process .') [astropy.time.core]
+gen_cats.py:63: RuntimeWarning: invalid value encountered in log10
+  bright_merge['GMAG']                = 22.5 - 2.5 * np.log10(bright_merge['FLUX_G'])
+gen_cats.py:64: RuntimeWarning: invalid value encountered in log10
+  bright_merge['GMAG_DRED']           = 22.5 - 2.5 * np.log10(bright_merge['FLUX_G'] / bright_merge['MW_TRANSMISSION_G'])
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: divide by zero encountered in log10
+  return 5. * np.log10(chi) + 25.
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/abs_mag.py:46: RuntimeWarning: invalid value encountered in add
+  return Mh + mu + kk
+/global/common/software/desi/cori/desiconda/20200801-1.4.0-spec/conda/lib/python3.8/site-packages/scipy/optimize/optimize.py:700: RuntimeWarning: invalid value encountered in subtract
+  np.max(np.abs(fsim[0] - fsim[1:])) <= fatol):
+/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/distances.py:13: RuntimeWarning: invalid value encountered in log10
+  return 5. * np.log10(chi) + 25.
+0.0 /global/cscratch1/sd/mjwilson/desi/BGS/lumfn/
+ CATAID        GAMA_NAME        IC_FLAG ... FITBITS   SERSIC   SERSIC_IVAR
+------- ----------------------- ------- ... ------- ---------- -----------
+   6802 GAMAJ113601.43+004315.3    4104 ...       0 0.90348786   5671.4395
+   6806 GAMAJ113605.47+004221.3    4104 ...       0        1.0         0.0
+   6808 GAMAJ113624.17+003932.1    4104 ...       0  4.9086385   430.04654
+   6810 GAMAJ113626.18+004814.0    4104 ...       0  1.7437057   2193.0415
+   6813 GAMAJ113615.31+003840.3    4104 ...       0        1.0         0.0
+   6816 GAMAJ113604.55+003956.8    4104 ...       0        1.0         0.0
+   6820 GAMAJ113608.43+004721.4    4104 ...       0  1.5361295  1023.42487
+   6821 GAMAJ113636.75+004855.5    4104 ...     131        0.0         0.0
+   6826 GAMAJ113644.38+004232.5    4104 ...       0        1.0         0.0
+   6830 GAMAJ113707.32+004221.9    4104 ...       0  0.8053958   10215.947
+    ...                     ...     ... ...     ...        ...         ...
+8009006 GAMAJ021940.94-063545.4     128 ...     128        0.0         0.0
+8009007 GAMAJ022024.66-041757.8     128 ...    4224        0.0         0.0
+8009008 GAMAJ022117.15-062354.9     128 ...     128        0.0         0.0
+8009009 GAMAJ022237.64-071255.6     128 ...     128        0.0         0.0
+8009010 GAMAJ022332.40-065742.3     128 ...    4224        0.0         0.0
+8009011 GAMAJ022454.84-061653.7     128 ...     128        0.0         0.0
+8009012 GAMAJ022644.82-071838.9     128 ...     128        0.0         0.0
+8009013 GAMAJ022734.56-051916.1     128 ...     130        0.0         0.0
+8009014 GAMAJ022803.78-040948.0     128 ...     128        0.0         0.0
+8009015 GAMAJ022854.75-045901.4     128 ...    4224        0.0         0.0
+8009016 GAMAJ023136.26-041831.4     128 ...     128        0.0         0.0
+Length = 159409 rows
+ CATAID        GAMA_NAME        IC_FLAG ... BGS_Z_SUCCESS BGS_Z_WEIGHT
+------- ----------------------- ------- ... ------------- ------------
+   6802 GAMAJ113601.43+004315.3    4104 ...          True          1.0
+   6806 GAMAJ113605.47+004221.3    4104 ...          True          1.0
+   6808 GAMAJ113624.17+003932.1    4104 ...          True          1.0
+   6810 GAMAJ113626.18+004814.0    4104 ...          True          1.0
+   6813 GAMAJ113615.31+003840.3    4104 ...          True          1.0
+   6816 GAMAJ113604.55+003956.8    4104 ...          True          1.0
+   6820 GAMAJ113608.43+004721.4    4104 ...          True          1.0
+   6821 GAMAJ113636.75+004855.5    4104 ...          True          1.0
+   6826 GAMAJ113644.38+004232.5    4104 ...          True          1.0
+   6830 GAMAJ113707.32+004221.9    4104 ...          True          1.0
+    ...                     ...     ... ...           ...          ...
+8009006 GAMAJ021940.94-063545.4     128 ...          True          1.0
+8009007 GAMAJ022024.66-041757.8     128 ...          True          1.0
+8009008 GAMAJ022117.15-062354.9     128 ...          True          1.0
+8009009 GAMAJ022237.64-071255.6     128 ...          True          1.0
+8009010 GAMAJ022332.40-065742.3     128 ...          True          1.0
+8009011 GAMAJ022454.84-061653.7     128 ...          True          1.0
+8009012 GAMAJ022644.82-071838.9     128 ...          True          1.0
+8009013 GAMAJ022734.56-051916.1     128 ...          True          1.0
+8009014 GAMAJ022803.78-040948.0     128 ...          True          1.0
+8009015 GAMAJ022854.75-045901.4     128 ...          True          1.0
+8009016 GAMAJ023136.26-041831.4     128 ...          True          1.0
+Length = 159042 rows
+0.00 complete after 0.00 minutes.
+0.06 complete after 0.25 minutes.
+0.13 complete after 0.51 minutes.
+0.19 complete after 0.73 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+0.25 complete after 0.98 minutes.
+0.31 complete after 1.23 minutes.
+0.38 complete after 1.49 minutes.
+0.44 complete after 1.73 minutes.
+0.50 complete after 1.98 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+0.57 complete after 2.23 minutes.
+0.63 complete after 2.47 minutes.
+0.69 complete after 2.70 minutes.
+0.75 complete after 2.94 minutes.
+0.82 complete after 3.19 minutes.
+0.88 complete after 3.44 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+0.94 complete after 3.69 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+1.01 complete after 3.94 minutes.
+1.07 complete after 4.18 minutes.
+1.13 complete after 4.44 minutes.
+1.19 complete after 4.69 minutes.
+1.26 complete after 4.95 minutes.
+1.32 complete after 5.22 minutes.
+1.38 complete after 5.47 minutes.
+1.45 complete after 5.74 minutes.
+1.51 complete after 6.00 minutes.
+1.57 complete after 6.27 minutes.
+1.63 complete after 6.54 minutes.
+1.70 complete after 6.80 minutes.
+1.76 complete after 7.08 minutes.
+1.82 complete after 7.34 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+1.89 complete after 7.60 minutes.
+1.95 complete after 7.85 minutes.
+2.01 complete after 8.11 minutes.
+2.07 complete after 8.36 minutes.
+2.14 complete after 8.62 minutes.
+2.20 complete after 8.87 minutes.
+2.26 complete after 9.13 minutes.
+2.33 complete after 9.39 minutes.
+2.39 complete after 9.63 minutes.
+2.45 complete after 9.86 minutes.
+2.52 complete after 10.10 minutes.
+2.58 complete after 10.34 minutes.
+2.64 complete after 10.59 minutes.
+2.70 complete after 10.82 minutes.
+2.77 complete after 11.04 minutes.
+2.83 complete after 11.30 minutes.
+2.89 complete after 11.55 minutes.
+2.96 complete after 11.79 minutes.
+3.02 complete after 12.02 minutes.
+3.08 complete after 12.27 minutes.
+3.14 complete after 12.52 minutes.
+3.21 complete after 12.77 minutes.
+3.27 complete after 12.99 minutes.
+3.33 complete after 13.22 minutes.
+3.40 complete after 13.45 minutes.
+3.46 complete after 13.69 minutes.
+3.52 complete after 13.91 minutes.
+3.58 complete after 14.13 minutes.
+3.65 complete after 14.36 minutes.
+3.71 complete after 14.58 minutes.
+3.77 complete after 14.80 minutes.
+3.84 complete after 15.02 minutes.
+3.90 complete after 15.24 minutes.
+3.96 complete after 15.49 minutes.
+4.02 complete after 15.74 minutes.
+4.09 complete after 15.98 minutes.
+4.15 complete after 16.22 minutes.
+4.21 complete after 16.47 minutes.
+4.28 complete after 16.71 minutes.
+4.34 complete after 16.94 minutes.
+4.40 complete after 17.19 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+4.46 complete after 17.44 minutes.
+4.53 complete after 17.68 minutes.
+4.59 complete after 17.93 minutes.
+4.65 complete after 18.19 minutes.
+4.72 complete after 18.44 minutes.
+4.78 complete after 18.68 minutes.
+4.84 complete after 18.94 minutes.
+4.90 complete after 19.19 minutes.
+4.97 complete after 19.45 minutes.
+5.03 complete after 19.70 minutes.
+5.09 complete after 19.95 minutes.
+5.16 complete after 20.20 minutes.
+5.22 complete after 20.47 minutes.
+5.28 complete after 20.73 minutes.
+5.34 complete after 20.98 minutes.
+5.41 complete after 21.23 minutes.
+5.47 complete after 21.48 minutes.
+5.53 complete after 21.73 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+5.60 complete after 21.99 minutes.
+5.66 complete after 22.24 minutes.
+5.72 complete after 22.49 minutes.
+5.78 complete after 22.74 minutes.
+5.85 complete after 22.99 minutes.
+5.91 complete after 23.24 minutes.
+5.97 complete after 23.50 minutes.
+6.04 complete after 23.75 minutes.
+6.10 complete after 23.99 minutes.
+6.16 complete after 24.24 minutes.
+6.22 complete after 24.50 minutes.
+6.29 complete after 24.75 minutes.
+6.35 complete after 25.01 minutes.
+6.41 complete after 25.26 minutes.
+6.48 complete after 25.52 minutes.
+6.54 complete after 25.77 minutes.
+6.60 complete after 26.02 minutes.
+6.66 complete after 26.28 minutes.
+6.73 complete after 26.52 minutes.
+6.79 complete after 26.75 minutes.
+6.85 complete after 26.98 minutes.
+6.92 complete after 27.22 minutes.
+6.98 complete after 27.45 minutes.
+7.04 complete after 27.68 minutes.
+7.11 complete after 27.91 minutes.
+7.17 complete after 28.15 minutes.
+7.23 complete after 28.38 minutes.
+7.29 complete after 28.61 minutes.
+7.36 complete after 28.86 minutes.
+7.42 complete after 29.10 minutes.
+7.48 complete after 29.34 minutes.
+7.55 complete after 29.58 minutes.
+7.61 complete after 29.82 minutes.
+7.67 complete after 30.07 minutes.
+7.73 complete after 30.34 minutes.
+7.80 complete after 30.63 minutes.
+7.86 complete after 30.93 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+7.92 complete after 31.23 minutes.
+7.99 complete after 31.53 minutes.
+8.05 complete after 31.83 minutes.
+8.11 complete after 32.14 minutes.
+8.17 complete after 32.42 minutes.
+8.24 complete after 32.71 minutes.
+8.30 complete after 32.94 minutes.
+8.36 complete after 33.19 minutes.
+8.43 complete after 33.43 minutes.
+8.49 complete after 33.67 minutes.
+8.55 complete after 33.92 minutes.
+8.61 complete after 34.15 minutes.
+8.68 complete after 34.39 minutes.
+8.74 complete after 34.62 minutes.
+8.80 complete after 34.86 minutes.
+8.87 complete after 35.10 minutes.
+8.93 complete after 35.35 minutes.
+8.99 complete after 35.62 minutes.
+9.05 complete after 35.87 minutes.
+9.12 complete after 36.13 minutes.
+9.18 complete after 36.40 minutes.
+9.24 complete after 36.66 minutes.
+9.31 complete after 36.91 minutes.
+9.37 complete after 37.14 minutes.
+9.43 complete after 37.38 minutes.
+9.49 complete after 37.63 minutes.
+9.56 complete after 37.86 minutes.
+9.62 complete after 38.09 minutes.
+9.68 complete after 38.33 minutes.
+9.75 complete after 38.58 minutes.
+9.81 complete after 38.83 minutes.
+9.87 complete after 39.08 minutes.
+9.93 complete after 39.32 minutes.
+10.00 complete after 39.57 minutes.
+10.06 complete after 39.82 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+10.12 complete after 40.06 minutes.
+10.19 complete after 40.31 minutes.
+10.25 complete after 40.54 minutes.
+10.31 complete after 40.77 minutes.
+10.37 complete after 41.01 minutes.
+10.44 complete after 41.31 minutes.
+10.50 complete after 41.57 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+10.56 complete after 41.87 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+10.63 complete after 42.14 minutes.
+10.69 complete after 42.40 minutes.
+10.75 complete after 42.65 minutes.
+10.81 complete after 42.90 minutes.
+10.88 complete after 43.16 minutes.
+10.94 complete after 43.42 minutes.
+11.00 complete after 43.68 minutes.
+11.07 complete after 43.94 minutes.
+11.13 complete after 44.19 minutes.
+11.19 complete after 44.44 minutes.
+11.25 complete after 44.68 minutes.
+11.32 complete after 44.92 minutes.
+11.38 complete after 45.18 minutes.
+11.44 complete after 45.44 minutes.
+11.51 complete after 45.72 minutes.
+11.57 complete after 45.96 minutes.
+11.63 complete after 46.23 minutes.
+11.70 complete after 46.48 minutes.
+11.76 complete after 46.71 minutes.
+11.82 complete after 46.96 minutes.
+11.88 complete after 47.18 minutes.
+11.95 complete after 47.40 minutes.
+12.01 complete after 47.63 minutes.
+12.07 complete after 47.86 minutes.
+12.14 complete after 48.11 minutes.
+12.20 complete after 48.34 minutes.
+12.26 complete after 48.58 minutes.
+12.32 complete after 48.83 minutes.
+12.39 complete after 49.07 minutes.
+12.45 complete after 49.31 minutes.
+12.51 complete after 49.55 minutes.
+12.58 complete after 49.80 minutes.
+12.64 complete after 50.07 minutes.
+12.70 complete after 50.32 minutes.
+12.76 complete after 50.56 minutes.
+12.83 complete after 50.88 minutes.
+12.89 complete after 51.15 minutes.
+12.95 complete after 51.41 minutes.
+13.02 complete after 51.67 minutes.
+13.08 complete after 51.91 minutes.
+13.14 complete after 52.17 minutes.
+13.20 complete after 52.42 minutes.
+13.27 complete after 52.67 minutes.
+13.33 complete after 52.93 minutes.
+13.39 complete after 53.22 minutes.
+13.46 complete after 53.47 minutes.
+13.52 complete after 53.73 minutes.
+13.58 complete after 54.00 minutes.
+13.64 complete after 54.28 minutes.
+13.71 complete after 54.57 minutes.
+13.77 complete after 54.85 minutes.
+13.83 complete after 55.13 minutes.
+13.90 complete after 55.39 minutes.
+13.96 complete after 55.66 minutes.
+14.02 complete after 55.92 minutes.
+14.08 complete after 56.20 minutes.
+14.15 complete after 56.47 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+14.21 complete after 56.76 minutes.
+14.27 complete after 56.99 minutes.
+14.34 complete after 57.22 minutes.
+14.40 complete after 57.45 minutes.
+14.46 complete after 57.68 minutes.
+14.52 complete after 57.91 minutes.
+14.59 complete after 58.15 minutes.
+14.65 complete after 58.38 minutes.
+14.71 complete after 58.62 minutes.
+14.78 complete after 58.86 minutes.
+14.84 complete after 59.10 minutes.
+14.90 complete after 59.35 minutes.
+14.96 complete after 59.60 minutes.
+15.03 complete after 59.84 minutes.
+15.09 complete after 60.09 minutes.
+15.15 complete after 60.34 minutes.
+15.22 complete after 60.58 minutes.
+15.28 complete after 60.81 minutes.
+15.34 complete after 61.05 minutes.
+15.40 complete after 61.32 minutes.
+15.47 complete after 61.58 minutes.
+15.53 complete after 61.83 minutes.
+15.59 complete after 62.10 minutes.
+15.66 complete after 62.34 minutes.
+15.72 complete after 62.59 minutes.
+15.78 complete after 62.83 minutes.
+15.84 complete after 63.07 minutes.
+15.91 complete after 63.31 minutes.
+15.97 complete after 63.56 minutes.
+16.03 complete after 63.80 minutes.
+16.10 complete after 64.03 minutes.
+16.16 complete after 64.26 minutes.
+16.22 complete after 64.50 minutes.
+16.29 complete after 64.73 minutes.
+16.35 complete after 64.95 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+16.41 complete after 65.19 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+16.47 complete after 65.43 minutes.
+16.54 complete after 65.67 minutes.
+16.60 complete after 65.91 minutes.
+16.66 complete after 66.16 minutes.
+16.73 complete after 66.41 minutes.
+16.79 complete after 66.65 minutes.
+16.85 complete after 66.89 minutes.
+16.91 complete after 67.13 minutes.
+16.98 complete after 67.37 minutes.
+17.04 complete after 67.61 minutes.
+17.10 complete after 67.85 minutes.
+17.17 complete after 68.09 minutes.
+17.23 complete after 68.33 minutes.
+17.29 complete after 68.56 minutes.
+17.35 complete after 68.80 minutes.
+17.42 complete after 69.04 minutes.
+17.48 complete after 69.30 minutes.
+17.54 complete after 69.53 minutes.
+17.61 complete after 69.79 minutes.
+17.67 complete after 70.03 minutes.
+17.73 complete after 70.31 minutes.
+17.79 complete after 70.55 minutes.
+17.86 complete after 70.79 minutes.
+17.92 complete after 71.02 minutes.
+17.98 complete after 71.25 minutes.
+18.05 complete after 71.48 minutes.
+18.11 complete after 71.72 minutes.
+18.17 complete after 71.94 minutes.
+18.23 complete after 72.17 minutes.
+18.30 complete after 72.43 minutes.
+18.36 complete after 72.68 minutes.
+18.42 complete after 72.91 minutes.
+18.49 complete after 73.18 minutes.
+18.55 complete after 73.44 minutes.
+18.61 complete after 73.69 minutes.
+18.67 complete after 73.95 minutes.
+18.74 complete after 74.21 minutes.
+18.80 complete after 74.47 minutes.
+18.86 complete after 74.74 minutes.
+18.93 complete after 75.00 minutes.
+18.99 complete after 75.27 minutes.
+19.05 complete after 75.56 minutes.
+19.11 complete after 75.85 minutes.
+19.18 complete after 76.12 minutes.
+19.24 complete after 76.40 minutes.
+19.30 complete after 76.71 minutes.
+19.37 complete after 76.96 minutes.
+19.43 complete after 77.20 minutes.
+19.49 complete after 77.43 minutes.
+19.55 complete after 77.66 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+19.62 complete after 77.90 minutes.
+19.68 complete after 78.12 minutes.
+19.74 complete after 78.35 minutes.
+19.81 complete after 78.57 minutes.
+19.87 complete after 78.79 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+19.93 complete after 79.04 minutes.
+19.99 complete after 79.27 minutes.
+20.06 complete after 79.49 minutes.
+20.12 complete after 79.71 minutes.
+20.18 complete after 79.95 minutes.
+20.25 complete after 80.21 minutes.
+20.31 complete after 80.48 minutes.
+20.37 complete after 80.74 minutes.
+20.43 complete after 80.99 minutes.
+20.50 complete after 81.25 minutes.
+20.56 complete after 81.52 minutes.
+20.62 complete after 81.79 minutes.
+20.69 complete after 82.09 minutes.
+20.75 complete after 82.37 minutes.
+20.81 complete after 82.59 minutes.
+20.87 complete after 82.82 minutes.
+20.94 complete after 83.04 minutes.
+21.00 complete after 83.28 minutes.
+21.06 complete after 83.52 minutes.
+21.13 complete after 83.74 minutes.
+21.19 complete after 83.96 minutes.
+21.25 complete after 84.18 minutes.
+21.32 complete after 84.41 minutes.
+21.38 complete after 84.63 minutes.
+21.44 complete after 84.85 minutes.
+21.50 complete after 85.06 minutes.
+21.57 complete after 85.28 minutes.
+21.63 complete after 85.50 minutes.
+21.69 complete after 85.74 minutes.
+21.76 complete after 85.97 minutes.
+21.82 complete after 86.22 minutes.
+21.88 complete after 86.47 minutes.
+21.94 complete after 86.70 minutes.
+22.01 complete after 86.93 minutes.
+22.07 complete after 87.17 minutes.
+22.13 complete after 87.45 minutes.
+22.20 complete after 87.69 minutes.
+22.26 complete after 87.94 minutes.
+22.32 complete after 88.19 minutes.
+22.38 complete after 88.44 minutes.
+22.45 complete after 88.69 minutes.
+22.51 complete after 88.95 minutes.
+22.57 complete after 89.19 minutes.
+22.64 complete after 89.43 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+22.70 complete after 89.67 minutes.
+22.76 complete after 89.91 minutes.
+22.82 complete after 90.16 minutes.
+22.89 complete after 90.40 minutes.
+22.95 complete after 90.63 minutes.
+23.01 complete after 90.87 minutes.
+23.08 complete after 91.12 minutes.
+23.14 complete after 91.38 minutes.
+23.20 complete after 91.62 minutes.
+23.26 complete after 91.85 minutes.
+23.33 complete after 92.07 minutes.
+23.39 complete after 92.31 minutes.
+23.45 complete after 92.54 minutes.
+23.52 complete after 92.78 minutes.
+23.58 complete after 93.05 minutes.
+23.64 complete after 93.31 minutes.
+23.70 complete after 93.58 minutes.
+23.77 complete after 93.82 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+23.83 complete after 94.05 minutes.
+23.89 complete after 94.28 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+23.96 complete after 94.51 minutes.
+24.02 complete after 94.75 minutes.
+24.08 complete after 94.98 minutes.
+24.14 complete after 95.22 minutes.
+24.21 complete after 95.46 minutes.
+24.27 complete after 95.70 minutes.
+24.33 complete after 95.94 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+24.40 complete after 96.21 minutes.
+24.46 complete after 96.49 minutes.
+24.52 complete after 96.75 minutes.
+24.58 complete after 96.99 minutes.
+24.65 complete after 97.23 minutes.
+24.71 complete after 97.47 minutes.
+24.77 complete after 97.71 minutes.
+24.84 complete after 97.96 minutes.
+24.90 complete after 98.21 minutes.
+24.96 complete after 98.46 minutes.
+25.02 complete after 98.69 minutes.
+25.09 complete after 98.95 minutes.
+25.15 complete after 99.19 minutes.
+25.21 complete after 99.42 minutes.
+25.28 complete after 99.67 minutes.
+25.34 complete after 99.91 minutes.
+25.40 complete after 100.14 minutes.
+25.46 complete after 100.39 minutes.
+25.53 complete after 100.64 minutes.
+25.59 complete after 100.88 minutes.
+25.65 complete after 101.12 minutes.
+25.72 complete after 101.38 minutes.
+25.78 complete after 101.64 minutes.
+25.84 complete after 101.88 minutes.
+25.91 complete after 102.12 minutes.
+25.97 complete after 102.36 minutes.
+26.03 complete after 102.60 minutes.
+26.09 complete after 102.86 minutes.
+26.16 complete after 103.11 minutes.
+26.22 complete after 103.35 minutes.
+26.28 complete after 103.61 minutes.
+26.35 complete after 103.86 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+26.41 complete after 104.14 minutes.
+26.47 complete after 104.42 minutes.
+26.53 complete after 104.71 minutes.
+26.60 complete after 105.01 minutes.
+26.66 complete after 105.29 minutes.
+26.72 complete after 105.59 minutes.
+26.79 complete after 105.88 minutes.
+26.85 complete after 106.17 minutes.
+26.91 complete after 106.47 minutes.
+26.97 complete after 106.77 minutes.
+27.04 complete after 107.03 minutes.
+27.10 complete after 107.26 minutes.
+27.16 complete after 107.49 minutes.
+27.23 complete after 107.72 minutes.
+27.29 complete after 107.95 minutes.
+27.35 complete after 108.19 minutes.
+27.41 complete after 108.44 minutes.
+27.48 complete after 108.69 minutes.
+27.54 complete after 108.93 minutes.
+27.60 complete after 109.18 minutes.
+27.67 complete after 109.45 minutes.
+27.73 complete after 109.70 minutes.
+27.79 complete after 109.95 minutes.
+27.85 complete after 110.22 minutes.
+27.92 complete after 110.46 minutes.
+27.98 complete after 110.71 minutes.
+28.04 complete after 110.96 minutes.
+28.11 complete after 111.22 minutes.
+28.17 complete after 111.50 minutes.
+28.23 complete after 111.77 minutes.
+28.29 complete after 112.02 minutes.
+28.36 complete after 112.32 minutes.
+28.42 complete after 112.61 minutes.
+28.48 complete after 112.90 minutes.
+28.55 complete after 113.17 minutes.
+28.61 complete after 113.44 minutes.
+28.67 complete after 113.72 minutes.
+28.73 complete after 114.00 minutes.
+28.80 complete after 114.28 minutes.
+28.86 complete after 114.55 minutes.
+28.92 complete after 114.81 minutes.
+28.99 complete after 115.06 minutes.
+29.05 complete after 115.30 minutes.
+29.11 complete after 115.55 minutes.
+29.17 complete after 115.80 minutes.
+29.24 complete after 116.05 minutes.
+29.30 complete after 116.31 minutes.
+29.36 complete after 116.57 minutes.
+29.43 complete after 116.83 minutes.
+29.49 complete after 117.08 minutes.
+29.55 complete after 117.35 minutes.
+29.61 complete after 117.60 minutes.
+29.68 complete after 117.85 minutes.
+29.74 complete after 118.08 minutes.
+29.80 complete after 118.35 minutes.
+29.87 complete after 118.62 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+29.93 complete after 118.87 minutes.
+29.99 complete after 119.12 minutes.
+30.05 complete after 119.37 minutes.
+30.12 complete after 119.63 minutes.
+30.18 complete after 119.87 minutes.
+30.24 complete after 120.12 minutes.
+30.31 complete after 120.37 minutes.
+30.37 complete after 120.62 minutes.
+30.43 complete after 120.88 minutes.
+30.50 complete after 121.15 minutes.
+30.56 complete after 121.43 minutes.
+30.62 complete after 121.69 minutes.
+30.68 complete after 121.94 minutes.
+30.75 complete after 122.23 minutes.
+30.81 complete after 122.48 minutes.
+30.87 complete after 122.77 minutes.
+30.94 complete after 123.04 minutes.
+31.00 complete after 123.29 minutes.
+31.06 complete after 123.54 minutes.
+31.12 complete after 123.77 minutes.
+31.19 complete after 124.02 minutes.
+31.25 complete after 124.29 minutes.
+31.31 complete after 124.54 minutes.
+31.38 complete after 124.78 minutes.
+31.44 complete after 125.02 minutes.
+31.50 complete after 125.27 minutes.
+31.56 complete after 125.52 minutes.
+31.63 complete after 125.78 minutes.
+31.69 complete after 126.04 minutes.
+31.75 complete after 126.32 minutes.
+31.82 complete after 126.59 minutes.
+31.88 complete after 126.84 minutes.
+31.94 complete after 127.09 minutes.
+32.00 complete after 127.35 minutes.
+32.07 complete after 127.61 minutes.
+32.13 complete after 127.85 minutes.
+32.19 complete after 128.09 minutes.
+32.26 complete after 128.34 minutes.
+32.32 complete after 128.59 minutes.
+32.38 complete after 128.84 minutes.
+32.44 complete after 129.08 minutes.
+32.51 complete after 129.31 minutes.
+32.57 complete after 129.55 minutes.
+32.63 complete after 129.80 minutes.
+32.70 complete after 130.06 minutes.
+32.76 complete after 130.32 minutes.
+32.82 complete after 130.57 minutes.
+32.88 complete after 130.82 minutes.
+32.95 complete after 131.08 minutes.
+33.01 complete after 131.33 minutes.
+33.07 complete after 131.60 minutes.
+33.14 complete after 131.86 minutes.
+33.20 complete after 132.11 minutes.
+33.26 complete after 132.35 minutes.
+33.32 complete after 132.62 minutes.
+33.39 complete after 132.87 minutes.
+33.45 complete after 133.15 minutes.
+33.51 complete after 133.40 minutes.
+33.58 complete after 133.66 minutes.
+33.64 complete after 133.93 minutes.
+33.70 complete after 134.19 minutes.
+33.76 complete after 134.45 minutes.
+33.83 complete after 134.73 minutes.
+33.89 complete after 135.00 minutes.
+33.95 complete after 135.25 minutes.
+34.02 complete after 135.49 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+34.08 complete after 135.74 minutes.
+34.14 complete after 135.98 minutes.
+34.20 complete after 136.25 minutes.
+34.27 complete after 136.50 minutes.
+34.33 complete after 136.74 minutes.
+34.39 complete after 136.99 minutes.
+34.46 complete after 137.24 minutes.
+34.52 complete after 137.48 minutes.
+34.58 complete after 137.72 minutes.
+34.64 complete after 137.96 minutes.
+34.71 complete after 138.20 minutes.
+34.77 complete after 138.45 minutes.
+34.83 complete after 138.71 minutes.
+34.90 complete after 138.96 minutes.
+34.96 complete after 139.20 minutes.
+35.02 complete after 139.45 minutes.
+35.09 complete after 139.68 minutes.
+35.15 complete after 139.92 minutes.
+35.21 complete after 140.17 minutes.
+35.27 complete after 140.41 minutes.
+35.34 complete after 140.65 minutes.
+35.40 complete after 140.88 minutes.
+35.46 complete after 141.13 minutes.
+35.53 complete after 141.38 minutes.
+35.59 complete after 141.63 minutes.
+35.65 complete after 141.87 minutes.
+35.71 complete after 142.14 minutes.
+35.78 complete after 142.40 minutes.
+35.84 complete after 142.66 minutes.
+35.90 complete after 142.93 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+35.97 complete after 143.22 minutes.
+36.03 complete after 143.51 minutes.
+36.09 complete after 143.82 minutes.
+36.15 complete after 144.13 minutes.
+36.22 complete after 144.41 minutes.
+36.28 complete after 144.69 minutes.
+36.34 complete after 144.97 minutes.
+36.41 complete after 145.26 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+36.47 complete after 145.53 minutes.
+36.53 complete after 145.77 minutes.
+36.59 complete after 146.00 minutes.
+36.66 complete after 146.24 minutes.
+36.72 complete after 146.52 minutes.
+36.78 complete after 146.77 minutes.
+36.85 complete after 147.02 minutes.
+36.91 complete after 147.27 minutes.
+36.97 complete after 147.52 minutes.
+37.03 complete after 147.79 minutes.
+37.10 complete after 148.05 minutes.
+37.16 complete after 148.30 minutes.
+37.22 complete after 148.55 minutes.
+37.29 complete after 148.81 minutes.
+37.35 complete after 149.06 minutes.
+37.41 complete after 149.32 minutes.
+37.47 complete after 149.57 minutes.
+37.54 complete after 149.84 minutes.
+37.60 complete after 150.11 minutes.
+37.66 complete after 150.38 minutes.
+37.73 complete after 150.64 minutes.
+37.79 complete after 150.90 minutes.
+37.85 complete after 151.16 minutes.
+37.91 complete after 151.42 minutes.
+37.98 complete after 151.69 minutes.
+38.04 complete after 151.94 minutes.
+38.10 complete after 152.20 minutes.
+38.17 complete after 152.46 minutes.
+38.23 complete after 152.71 minutes.
+38.29 complete after 152.96 minutes.
+38.35 complete after 153.21 minutes.
+38.42 complete after 153.48 minutes.
+38.48 complete after 153.74 minutes.
+38.54 complete after 154.01 minutes.
+38.61 complete after 154.29 minutes.
+38.67 complete after 154.54 minutes.
+38.73 complete after 154.79 minutes.
+38.79 complete after 155.03 minutes.
+38.86 complete after 155.28 minutes.
+38.92 complete after 155.53 minutes.
+38.98 complete after 155.79 minutes.
+39.05 complete after 156.06 minutes.
+39.11 complete after 156.34 minutes.
+39.17 complete after 156.61 minutes.
+39.23 complete after 156.87 minutes.
+39.30 complete after 157.13 minutes.
+39.36 complete after 157.41 minutes.
+39.42 complete after 157.67 minutes.
+39.49 complete after 157.94 minutes.
+39.55 complete after 158.19 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+39.61 complete after 158.48 minutes.
+39.68 complete after 158.75 minutes.
+39.74 complete after 159.01 minutes.
+39.80 complete after 159.28 minutes.
+39.86 complete after 159.55 minutes.
+39.93 complete after 159.82 minutes.
+39.99 complete after 160.09 minutes.
+40.05 complete after 160.36 minutes.
+40.12 complete after 160.64 minutes.
+40.18 complete after 160.91 minutes.
+40.24 complete after 161.21 minutes.
+40.30 complete after 161.48 minutes.
+40.37 complete after 161.76 minutes.
+40.43 complete after 162.02 minutes.
+40.49 complete after 162.27 minutes.
+40.56 complete after 162.53 minutes.
+40.62 complete after 162.80 minutes.
+40.68 complete after 163.06 minutes.
+40.74 complete after 163.33 minutes.
+40.81 complete after 163.59 minutes.
+40.87 complete after 163.85 minutes.
+40.93 complete after 164.12 minutes.
+41.00 complete after 164.40 minutes.
+41.06 complete after 164.66 minutes.
+41.12 complete after 164.92 minutes.
+41.18 complete after 165.16 minutes.
+41.25 complete after 165.42 minutes.
+41.31 complete after 165.67 minutes.
+41.37 complete after 165.93 minutes.
+41.44 complete after 166.20 minutes.
+41.50 complete after 166.46 minutes.
+41.56 complete after 166.70 minutes.
+41.62 complete after 166.94 minutes.
+41.69 complete after 167.17 minutes.
+41.75 complete after 167.41 minutes.
+41.81 complete after 167.65 minutes.
+41.88 complete after 167.89 minutes.
+41.94 complete after 168.13 minutes.
+42.00 complete after 168.39 minutes.
+42.06 complete after 168.63 minutes.
+42.13 complete after 168.88 minutes.
+42.19 complete after 169.12 minutes.
+42.25 complete after 169.35 minutes.
+42.32 complete after 169.62 minutes.
+42.38 complete after 169.89 minutes.
+42.44 complete after 170.16 minutes.
+42.50 complete after 170.45 minutes.
+42.57 complete after 170.73 minutes.
+42.63 complete after 171.03 minutes.
+42.69 complete after 171.32 minutes.
+42.76 complete after 171.62 minutes.
+42.82 complete after 171.89 minutes.
+42.88 complete after 172.18 minutes.
+42.94 complete after 172.45 minutes.
+43.01 complete after 172.71 minutes.
+43.07 complete after 172.96 minutes.
+43.13 complete after 173.21 minutes.
+43.20 complete after 173.47 minutes.
+43.26 complete after 173.73 minutes.
+43.32 complete after 173.97 minutes.
+43.38 complete after 174.22 minutes.
+43.45 complete after 174.47 minutes.
+43.51 complete after 174.71 minutes.
+43.57 complete after 174.97 minutes.
+43.64 complete after 175.22 minutes.
+43.70 complete after 175.47 minutes.
+43.76 complete after 175.72 minutes.
+43.82 complete after 175.98 minutes.
+43.89 complete after 176.25 minutes.
+43.95 complete after 176.52 minutes.
+44.01 complete after 176.78 minutes.
+44.08 complete after 177.04 minutes.
+44.14 complete after 177.29 minutes.
+44.20 complete after 177.54 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+44.27 complete after 177.80 minutes.
+44.33 complete after 178.06 minutes.
+44.39 complete after 178.31 minutes.
+44.45 complete after 178.58 minutes.
+44.52 complete after 178.81 minutes.
+44.58 complete after 179.05 minutes.
+44.64 complete after 179.29 minutes.
+44.71 complete after 179.54 minutes.
+44.77 complete after 179.79 minutes.
+44.83 complete after 180.05 minutes.
+44.89 complete after 180.29 minutes.
+44.96 complete after 180.54 minutes.
+45.02 complete after 180.79 minutes.
+45.08 complete after 181.05 minutes.
+45.15 complete after 181.33 minutes.
+45.21 complete after 181.59 minutes.
+45.27 complete after 181.88 minutes.
+45.33 complete after 182.16 minutes.
+45.40 complete after 182.46 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+45.46 complete after 182.73 minutes.
+45.52 complete after 183.00 minutes.
+45.59 complete after 183.25 minutes.
+45.65 complete after 183.50 minutes.
+45.71 complete after 183.78 minutes.
+45.77 complete after 184.07 minutes.
+45.84 complete after 184.36 minutes.
+45.90 complete after 184.64 minutes.
+45.96 complete after 184.93 minutes.
+46.03 complete after 185.18 minutes.
+46.09 complete after 185.45 minutes.
+46.15 complete after 185.70 minutes.
+46.21 complete after 185.97 minutes.
+46.28 complete after 186.26 minutes.
+46.34 complete after 186.55 minutes.
+46.40 complete after 186.83 minutes.
+46.47 complete after 187.12 minutes.
+46.53 complete after 187.40 minutes.
+46.59 complete after 187.69 minutes.
+46.65 complete after 187.99 minutes.
+46.72 complete after 188.28 minutes.
+46.78 complete after 188.56 minutes.
+46.84 complete after 188.84 minutes.
+46.91 complete after 189.12 minutes.
+46.97 complete after 189.41 minutes.
+47.03 complete after 189.68 minutes.
+47.09 complete after 189.98 minutes.
+47.16 complete after 190.26 minutes.
+47.22 complete after 190.57 minutes.
+47.28 complete after 190.86 minutes.
+47.35 complete after 191.13 minutes.
+47.41 complete after 191.43 minutes.
+47.47 complete after 191.73 minutes.
+47.53 complete after 192.02 minutes.
+47.60 complete after 192.31 minutes.
+47.66 complete after 192.60 minutes.
+47.72 complete after 192.84 minutes.
+47.79 complete after 193.07 minutes.
+47.85 complete after 193.30 minutes.
+47.91 complete after 193.53 minutes.
+47.97 complete after 193.75 minutes.
+48.04 complete after 194.00 minutes.
+48.10 complete after 194.24 minutes.
+48.16 complete after 194.47 minutes.
+48.23 complete after 194.70 minutes.
+48.29 complete after 194.93 minutes.
+48.35 complete after 195.18 minutes.
+48.41 complete after 195.42 minutes.
+48.48 complete after 195.66 minutes.
+48.54 complete after 195.89 minutes.
+48.60 complete after 196.14 minutes.
+48.67 complete after 196.40 minutes.
+48.73 complete after 196.65 minutes.
+48.79 complete after 196.91 minutes.
+48.86 complete after 197.17 minutes.
+48.92 complete after 197.41 minutes.
+48.98 complete after 197.66 minutes.
+49.04 complete after 197.91 minutes.
+49.11 complete after 198.15 minutes.
+49.17 complete after 198.41 minutes.
+49.23 complete after 198.65 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+49.30 complete after 198.90 minutes.
+49.36 complete after 199.13 minutes.
+49.42 complete after 199.36 minutes.
+49.48 complete after 199.60 minutes.
+49.55 complete after 199.84 minutes.
+49.61 complete after 200.08 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+49.67 complete after 200.31 minutes.
+49.74 complete after 200.55 minutes.
+49.80 complete after 200.78 minutes.
+49.86 complete after 201.02 minutes.
+49.92 complete after 201.29 minutes.
+49.99 complete after 201.55 minutes.
+50.05 complete after 201.80 minutes.
+50.11 complete after 202.03 minutes.
+50.18 complete after 202.28 minutes.
+50.24 complete after 202.53 minutes.
+50.30 complete after 202.78 minutes.
+50.36 complete after 203.02 minutes.
+50.43 complete after 203.27 minutes.
+50.49 complete after 203.52 minutes.
+50.55 complete after 203.79 minutes.
+50.62 complete after 204.04 minutes.
+50.68 complete after 204.30 minutes.
+50.74 complete after 204.54 minutes.
+50.80 complete after 204.78 minutes.
+50.87 complete after 205.03 minutes.
+50.93 complete after 205.27 minutes.
+50.99 complete after 205.50 minutes.
+51.06 complete after 205.75 minutes.
+51.12 complete after 205.99 minutes.
+51.18 complete after 206.27 minutes.
+51.24 complete after 206.54 minutes.
+51.31 complete after 206.80 minutes.
+51.37 complete after 207.05 minutes.
+51.43 complete after 207.31 minutes.
+51.50 complete after 207.57 minutes.
+51.56 complete after 207.83 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+51.62 complete after 208.08 minutes.
+51.68 complete after 208.33 minutes.
+51.75 complete after 208.58 minutes.
+51.81 complete after 208.83 minutes.
+51.87 complete after 209.10 minutes.
+51.94 complete after 209.37 minutes.
+52.00 complete after 209.63 minutes.
+52.06 complete after 209.89 minutes.
+52.12 complete after 210.16 minutes.
+52.19 complete after 210.39 minutes.
+52.25 complete after 210.64 minutes.
+52.31 complete after 210.91 minutes.
+52.38 complete after 211.20 minutes.
+52.44 complete after 211.47 minutes.
+52.50 complete after 211.74 minutes.
+52.56 complete after 212.00 minutes.
+52.63 complete after 212.27 minutes.
+52.69 complete after 212.56 minutes.
+52.75 complete after 212.84 minutes.
+52.82 complete after 213.12 minutes.
+52.88 complete after 213.38 minutes.
+52.94 complete after 213.66 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+53.00 complete after 213.95 minutes.
+53.07 complete after 214.24 minutes.
+53.13 complete after 214.54 minutes.
+53.19 complete after 214.83 minutes.
+53.26 complete after 215.11 minutes.
+53.32 complete after 215.38 minutes.
+53.38 complete after 215.69 minutes.
+53.45 complete after 215.97 minutes.
+53.51 complete after 216.27 minutes.
+53.57 complete after 216.55 minutes.
+53.63 complete after 216.84 minutes.
+53.70 complete after 217.13 minutes.
+53.76 complete after 217.41 minutes.
+53.82 complete after 217.71 minutes.
+53.89 complete after 218.01 minutes.
+53.95 complete after 218.27 minutes.
+54.01 complete after 218.52 minutes.
+54.07 complete after 218.77 minutes.
+54.14 complete after 219.03 minutes.
+54.20 complete after 219.28 minutes.
+54.26 complete after 219.52 minutes.
+54.33 complete after 219.77 minutes.
+54.39 complete after 220.01 minutes.
+54.45 complete after 220.24 minutes.
+54.51 complete after 220.49 minutes.
+54.58 complete after 220.76 minutes.
+54.64 complete after 221.03 minutes.
+54.70 complete after 221.30 minutes.
+54.77 complete after 221.55 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+54.83 complete after 221.81 minutes.
+54.89 complete after 222.07 minutes.
+54.95 complete after 222.32 minutes.
+55.02 complete after 222.58 minutes.
+55.08 complete after 222.83 minutes.
+55.14 complete after 223.07 minutes.
+55.21 complete after 223.33 minutes.
+55.27 complete after 223.58 minutes.
+55.33 complete after 223.83 minutes.
+55.39 complete after 224.09 minutes.
+55.46 complete after 224.33 minutes.
+55.52 complete after 224.57 minutes.
+55.58 complete after 224.80 minutes.
+55.65 complete after 225.09 minutes.
+55.71 complete after 225.34 minutes.
+55.77 complete after 225.57 minutes.
+55.83 complete after 225.81 minutes.
+55.90 complete after 226.04 minutes.
+55.96 complete after 226.30 minutes.
+56.02 complete after 226.55 minutes.
+56.09 complete after 226.79 minutes.
+56.15 complete after 227.04 minutes.
+56.21 complete after 227.27 minutes.
+56.27 complete after 227.50 minutes.
+56.34 complete after 227.73 minutes.
+56.40 complete after 227.95 minutes.
+56.46 complete after 228.20 minutes.
+56.53 complete after 228.45 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+56.59 complete after 228.69 minutes.
+56.65 complete after 228.94 minutes.
+56.71 complete after 229.17 minutes.
+56.78 complete after 229.41 minutes.
+56.84 complete after 229.66 minutes.
+56.90 complete after 229.90 minutes.
+56.97 complete after 230.16 minutes.
+57.03 complete after 230.40 minutes.
+57.09 complete after 230.65 minutes.
+57.15 complete after 230.88 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+57.22 complete after 231.13 minutes.
+57.28 complete after 231.40 minutes.
+57.34 complete after 231.64 minutes.
+57.41 complete after 231.87 minutes.
+57.47 complete after 232.13 minutes.
+57.53 complete after 232.38 minutes.
+57.59 complete after 232.63 minutes.
+57.66 complete after 232.90 minutes.
+57.72 complete after 233.14 minutes.
+57.78 complete after 233.39 minutes.
+57.85 complete after 233.65 minutes.
+57.91 complete after 233.94 minutes.
+57.97 complete after 234.19 minutes.
+58.03 complete after 234.45 minutes.
+58.10 complete after 234.70 minutes.
+58.16 complete after 234.95 minutes.
+58.22 complete after 235.19 minutes.
+58.29 complete after 235.45 minutes.
+58.35 complete after 235.71 minutes.
+58.41 complete after 235.97 minutes.
+58.48 complete after 236.23 minutes.
+58.54 complete after 236.49 minutes.
+58.60 complete after 236.76 minutes.
+58.66 complete after 237.02 minutes.
+58.73 complete after 237.26 minutes.
+58.79 complete after 237.49 minutes.
+58.85 complete after 237.74 minutes.
+58.92 complete after 237.98 minutes.
+58.98 complete after 238.23 minutes.
+59.04 complete after 238.47 minutes.
+59.10 complete after 238.71 minutes.
+59.17 complete after 238.92 minutes.
+59.23 complete after 239.14 minutes.
+59.29 complete after 239.37 minutes.
+59.36 complete after 239.60 minutes.
+59.42 complete after 239.83 minutes.
+59.48 complete after 240.05 minutes.
+59.54 complete after 240.28 minutes.
+59.61 complete after 240.53 minutes.
+59.67 complete after 240.78 minutes.
+59.73 complete after 241.03 minutes.
+59.80 complete after 241.29 minutes.
+59.86 complete after 241.53 minutes.
+59.92 complete after 241.77 minutes.
+59.98 complete after 242.00 minutes.
+60.05 complete after 242.25 minutes.
+60.11 complete after 242.48 minutes.
+60.17 complete after 242.73 minutes.
+60.24 complete after 242.96 minutes.
+60.30 complete after 243.19 minutes.
+60.36 complete after 243.45 minutes.
+60.42 complete after 243.68 minutes.
+60.49 complete after 243.93 minutes.
+60.55 complete after 244.19 minutes.
+60.61 complete after 244.45 minutes.
+60.68 complete after 244.69 minutes.
+60.74 complete after 244.93 minutes.
+60.80 complete after 245.19 minutes.
+60.86 complete after 245.44 minutes.
+60.93 complete after 245.70 minutes.
+60.99 complete after 245.94 minutes.
+61.05 complete after 246.19 minutes.
+61.12 complete after 246.45 minutes.
+61.18 complete after 246.69 minutes.
+61.24 complete after 246.95 minutes.
+61.30 complete after 247.20 minutes.
+61.37 complete after 247.45 minutes.
+61.43 complete after 247.69 minutes.
+61.49 complete after 247.94 minutes.
+61.56 complete after 248.20 minutes.
+61.62 complete after 248.47 minutes.
+61.68 complete after 248.72 minutes.
+61.74 complete after 248.98 minutes.
+61.81 complete after 249.24 minutes.
+61.87 complete after 249.49 minutes.
+61.93 complete after 249.72 minutes.
+62.00 complete after 249.95 minutes.
+62.06 complete after 250.20 minutes.
+62.12 complete after 250.45 minutes.
+62.18 complete after 250.70 minutes.
+62.25 complete after 250.96 minutes.
+62.31 complete after 251.21 minutes.
+62.37 complete after 251.47 minutes.
+62.44 complete after 251.73 minutes.
+62.50 complete after 251.97 minutes.
+62.56 complete after 252.20 minutes.
+62.62 complete after 252.44 minutes.
+62.69 complete after 252.67 minutes.
+62.75 complete after 252.91 minutes.
+62.81 complete after 253.17 minutes.
+62.88 complete after 253.41 minutes.
+62.94 complete after 253.67 minutes.
+63.00 complete after 253.91 minutes.
+63.07 complete after 254.18 minutes.
+63.13 complete after 254.45 minutes.
+63.19 complete after 254.74 minutes.
+63.25 complete after 255.04 minutes.
+63.32 complete after 255.33 minutes.
+63.38 complete after 255.62 minutes.
+63.44 complete after 255.87 minutes.
+63.51 complete after 256.15 minutes.
+63.57 complete after 256.44 minutes.
+63.63 complete after 256.71 minutes.
+63.69 complete after 256.94 minutes.
+63.76 complete after 257.17 minutes.
+63.82 complete after 257.41 minutes.
+63.88 complete after 257.66 minutes.
+63.95 complete after 257.92 minutes.
+64.01 complete after 258.17 minutes.
+64.07 complete after 258.41 minutes.
+64.13 complete after 258.64 minutes.
+64.20 complete after 258.90 minutes.
+64.26 complete after 259.17 minutes.
+64.32 complete after 259.42 minutes.
+64.39 complete after 259.66 minutes.
+64.45 complete after 259.89 minutes.
+64.51 complete after 260.13 minutes.
+64.57 complete after 260.38 minutes.
+64.64 complete after 260.63 minutes.
+64.70 complete after 260.89 minutes.
+64.76 complete after 261.15 minutes.
+64.83 complete after 261.40 minutes.
+64.89 complete after 261.65 minutes.
+64.95 complete after 261.89 minutes.
+65.01 complete after 262.14 minutes.
+65.08 complete after 262.39 minutes.
+65.14 complete after 262.64 minutes.
+65.20 complete after 262.90 minutes.
+65.27 complete after 263.15 minutes.
+65.33 complete after 263.41 minutes.
+65.39 complete after 263.67 minutes.
+65.45 complete after 263.92 minutes.
+65.52 complete after 264.19 minutes.
+65.58 complete after 264.45 minutes.
+65.64 complete after 264.70 minutes.
+65.71 complete after 264.95 minutes.
+65.77 complete after 265.19 minutes.
+65.83 complete after 265.42 minutes.
+65.89 complete after 265.66 minutes.
+65.96 complete after 265.91 minutes.
+66.02 complete after 266.17 minutes.
+66.08 complete after 266.43 minutes.
+66.15 complete after 266.67 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+66.21 complete after 266.90 minutes.
+66.27 complete after 267.13 minutes.
+66.33 complete after 267.36 minutes.
+66.40 complete after 267.60 minutes.
+66.46 complete after 267.83 minutes.
+66.52 complete after 268.05 minutes.
+66.59 complete after 268.27 minutes.
+66.65 complete after 268.50 minutes.
+66.71 complete after 268.73 minutes.
+66.77 complete after 268.97 minutes.
+66.84 complete after 269.19 minutes.
+66.90 complete after 269.42 minutes.
+66.96 complete after 269.63 minutes.
+67.03 complete after 269.86 minutes.
+67.09 complete after 270.10 minutes.
+67.15 complete after 270.34 minutes.
+67.21 complete after 270.58 minutes.
+67.28 complete after 270.81 minutes.
+67.34 complete after 271.04 minutes.
+67.40 complete after 271.28 minutes.
+67.47 complete after 271.53 minutes.
+67.53 complete after 271.78 minutes.
+67.59 complete after 272.02 minutes.
+67.66 complete after 272.27 minutes.
+67.72 complete after 272.50 minutes.
+67.78 complete after 272.74 minutes.
+67.84 complete after 272.98 minutes.
+67.91 complete after 273.22 minutes.
+67.97 complete after 273.45 minutes.
+68.03 complete after 273.70 minutes.
+68.10 complete after 273.94 minutes.
+68.16 complete after 274.19 minutes.
+68.22 complete after 274.45 minutes.
+68.28 complete after 274.68 minutes.
+68.35 complete after 274.92 minutes.
+68.41 complete after 275.16 minutes.
+68.47 complete after 275.41 minutes.
+68.54 complete after 275.66 minutes.
+68.60 complete after 275.90 minutes.
+68.66 complete after 276.14 minutes.
+68.72 complete after 276.40 minutes.
+68.79 complete after 276.63 minutes.
+68.85 complete after 276.85 minutes.
+68.91 complete after 277.08 minutes.
+68.98 complete after 277.31 minutes.
+69.04 complete after 277.53 minutes.
+69.10 complete after 277.75 minutes.
+69.16 complete after 277.97 minutes.
+69.23 complete after 278.18 minutes.
+69.29 complete after 278.41 minutes.
+69.35 complete after 278.63 minutes.
+69.42 complete after 278.86 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+69.48 complete after 279.13 minutes.
+69.54 complete after 279.40 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+69.60 complete after 279.67 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+69.67 complete after 279.94 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+69.73 complete after 280.23 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+69.79 complete after 280.51 minutes.
+69.86 complete after 280.80 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+69.92 complete after 281.10 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+69.98 complete after 281.41 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+70.04 complete after 281.74 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+70.11 complete after 282.08 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+70.17 complete after 282.40 minutes.
+70.23 complete after 282.68 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+70.30 complete after 282.99 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+70.36 complete after 283.32 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+70.42 complete after 283.66 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+70.48 complete after 283.96 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+70.55 complete after 284.28 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+70.61 complete after 284.61 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+70.67 complete after 284.92 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+70.74 complete after 285.22 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+70.80 complete after 285.52 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+70.86 complete after 285.82 minutes.
+70.92 complete after 286.11 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+70.99 complete after 286.43 minutes.
+71.05 complete after 286.71 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+71.11 complete after 287.00 minutes.
+71.18 complete after 287.28 minutes.
+71.24 complete after 287.55 minutes.
+71.30 complete after 287.82 minutes.
+71.36 complete after 288.09 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+71.43 complete after 288.37 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+71.49 complete after 288.66 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+71.55 complete after 288.97 minutes.
+71.62 complete after 289.25 minutes.
+71.68 complete after 289.53 minutes.
+71.74 complete after 289.81 minutes.
+71.80 complete after 290.09 minutes.
+71.87 complete after 290.37 minutes.
+71.93 complete after 290.64 minutes.
+71.99 complete after 290.89 minutes.
+72.06 complete after 291.19 minutes.
+72.12 complete after 291.47 minutes.
+72.18 complete after 291.75 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+72.25 complete after 292.05 minutes.
+72.31 complete after 292.32 minutes.
+72.37 complete after 292.59 minutes.
+72.43 complete after 292.86 minutes.
+72.50 complete after 293.14 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+72.56 complete after 293.41 minutes.
+72.62 complete after 293.69 minutes.
+72.69 complete after 293.96 minutes.
+72.75 complete after 294.24 minutes.
+72.81 complete after 294.52 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+72.87 complete after 294.82 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+72.94 complete after 295.11 minutes.
+73.00 complete after 295.38 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+73.06 complete after 295.65 minutes.
+73.13 complete after 295.91 minutes.
+73.19 complete after 296.16 minutes.
+73.25 complete after 296.44 minutes.
+73.31 complete after 296.69 minutes.
+73.38 complete after 296.93 minutes.
+73.44 complete after 297.17 minutes.
+73.50 complete after 297.44 minutes.
+73.57 complete after 297.69 minutes.
+73.63 complete after 297.94 minutes.
+73.69 complete after 298.19 minutes.
+73.75 complete after 298.44 minutes.
+73.82 complete after 298.69 minutes.
+73.88 complete after 298.93 minutes.
+73.94 complete after 299.17 minutes.
+74.01 complete after 299.40 minutes.
+74.07 complete after 299.64 minutes.
+74.13 complete after 299.87 minutes.
+74.19 complete after 300.12 minutes.
+74.26 complete after 300.37 minutes.
+74.32 complete after 300.61 minutes.
+74.38 complete after 300.86 minutes.
+74.45 complete after 301.11 minutes.
+74.51 complete after 301.37 minutes.
+74.57 complete after 301.61 minutes.
+74.63 complete after 301.86 minutes.
+74.70 complete after 302.10 minutes.
+74.76 complete after 302.33 minutes.
+74.82 complete after 302.56 minutes.
+74.89 complete after 302.79 minutes.
+74.95 complete after 303.02 minutes.
+75.01 complete after 303.26 minutes.
+75.07 complete after 303.51 minutes.
+75.14 complete after 303.76 minutes.
+75.20 complete after 303.99 minutes.
+75.26 complete after 304.24 minutes.
+75.33 complete after 304.47 minutes.
+75.39 complete after 304.70 minutes.
+75.45 complete after 304.93 minutes.
+75.51 complete after 305.19 minutes.
+75.58 complete after 305.44 minutes.
+75.64 complete after 305.68 minutes.
+75.70 complete after 305.92 minutes.
+75.77 complete after 306.19 minutes.
+75.83 complete after 306.46 minutes.
+75.89 complete after 306.71 minutes.
+75.95 complete after 306.96 minutes.
+76.02 complete after 307.20 minutes.
+76.08 complete after 307.44 minutes.
+76.14 complete after 307.66 minutes.
+76.21 complete after 307.90 minutes.
+76.27 complete after 308.15 minutes.
+76.33 complete after 308.39 minutes.
+76.39 complete after 308.62 minutes.
+76.46 complete after 308.86 minutes.
+76.52 complete after 309.10 minutes.
+76.58 complete after 309.34 minutes.
+76.65 complete after 309.61 minutes.
+76.71 complete after 309.91 minutes.
+76.77 complete after 310.20 minutes.
+76.84 complete after 310.45 minutes.
+76.90 complete after 310.71 minutes.
+76.96 complete after 310.95 minutes.
+77.02 complete after 311.21 minutes.
+77.09 complete after 311.47 minutes.
+77.15 complete after 311.71 minutes.
+77.21 complete after 311.95 minutes.
+77.28 complete after 312.20 minutes.
+77.34 complete after 312.45 minutes.
+77.40 complete after 312.71 minutes.
+77.46 complete after 312.95 minutes.
+77.53 complete after 313.18 minutes.
+77.59 complete after 313.42 minutes.
+77.65 complete after 313.66 minutes.
+77.72 complete after 313.90 minutes.
+77.78 complete after 314.15 minutes.
+77.84 complete after 314.38 minutes.
+77.90 complete after 314.61 minutes.
+77.97 complete after 314.83 minutes.
+78.03 complete after 315.07 minutes.
+78.09 complete after 315.31 minutes.
+78.16 complete after 315.54 minutes.
+78.22 complete after 315.78 minutes.
+78.28 complete after 316.02 minutes.
+78.34 complete after 316.29 minutes.
+78.41 complete after 316.54 minutes.
+78.47 complete after 316.79 minutes.
+78.53 complete after 317.04 minutes.
+78.60 complete after 317.28 minutes.
+78.66 complete after 317.52 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+78.72 complete after 317.76 minutes.
+78.78 complete after 317.99 minutes.
+78.85 complete after 318.26 minutes.
+78.91 complete after 318.51 minutes.
+78.97 complete after 318.76 minutes.
+79.04 complete after 318.99 minutes.
+79.10 complete after 319.23 minutes.
+79.16 complete after 319.48 minutes.
+79.22 complete after 319.72 minutes.
+79.29 complete after 319.97 minutes.
+79.35 complete after 320.20 minutes.
+79.41 complete after 320.45 minutes.
+79.48 complete after 320.69 minutes.
+79.54 complete after 320.93 minutes.
+79.60 complete after 321.18 minutes.
+79.66 complete after 321.43 minutes.
+79.73 complete after 321.67 minutes.
+79.79 complete after 321.91 minutes.
+79.85 complete after 322.15 minutes.
+79.92 complete after 322.39 minutes.
+79.98 complete after 322.64 minutes.
+80.04 complete after 322.88 minutes.
+80.10 complete after 323.12 minutes.
+80.17 complete after 323.37 minutes.
+80.23 complete after 323.64 minutes.
+80.29 complete after 323.91 minutes.
+80.36 complete after 324.16 minutes.
+80.42 complete after 324.42 minutes.
+80.48 complete after 324.67 minutes.
+80.54 complete after 324.92 minutes.
+80.61 complete after 325.18 minutes.
+80.67 complete after 325.42 minutes.
+80.73 complete after 325.67 minutes.
+80.80 complete after 325.91 minutes.
+80.86 complete after 326.16 minutes.
+80.92 complete after 326.44 minutes.
+80.98 complete after 326.67 minutes.
+81.05 complete after 326.91 minutes.
+81.11 complete after 327.15 minutes.
+81.17 complete after 327.39 minutes.
+81.24 complete after 327.65 minutes.
+81.30 complete after 327.89 minutes.
+81.36 complete after 328.13 minutes.
+81.43 complete after 328.38 minutes.
+81.49 complete after 328.63 minutes.
+81.55 complete after 328.88 minutes.
+81.61 complete after 329.13 minutes.
+81.68 complete after 329.38 minutes.
+81.74 complete after 329.64 minutes.
+81.80 complete after 329.87 minutes.
+81.87 complete after 330.11 minutes.
+81.93 complete after 330.36 minutes.
+81.99 complete after 330.62 minutes.
+82.05 complete after 330.86 minutes.
+82.12 complete after 331.11 minutes.
+82.18 complete after 331.37 minutes.
+82.24 complete after 331.62 minutes.
+82.31 complete after 331.87 minutes.
+82.37 complete after 332.11 minutes.
+82.43 complete after 332.35 minutes.
+82.49 complete after 332.60 minutes.
+82.56 complete after 332.85 minutes.
+82.62 complete after 333.11 minutes.
+82.68 complete after 333.37 minutes.
+82.75 complete after 333.62 minutes.
+82.81 complete after 333.87 minutes.
+82.87 complete after 334.11 minutes.
+82.93 complete after 334.36 minutes.
+83.00 complete after 334.59 minutes.
+83.06 complete after 334.86 minutes.
+83.12 complete after 335.12 minutes.
+83.19 complete after 335.38 minutes.
+83.25 complete after 335.66 minutes.
+83.31 complete after 335.94 minutes.
+83.37 complete after 336.20 minutes.
+83.44 complete after 336.46 minutes.
+83.50 complete after 336.70 minutes.
+83.56 complete after 336.94 minutes.
+83.63 complete after 337.18 minutes.
+83.69 complete after 337.41 minutes.
+83.75 complete after 337.64 minutes.
+83.81 complete after 337.87 minutes.
+83.88 complete after 338.11 minutes.
+83.94 complete after 338.35 minutes.
+84.00 complete after 338.59 minutes.
+84.07 complete after 338.86 minutes.
+84.13 complete after 339.11 minutes.
+84.19 complete after 339.36 minutes.
+84.25 complete after 339.60 minutes.
+84.32 complete after 339.83 minutes.
+84.38 complete after 340.07 minutes.
+84.44 complete after 340.32 minutes.
+84.51 complete after 340.56 minutes.
+84.57 complete after 340.79 minutes.
+84.63 complete after 341.01 minutes.
+84.69 complete after 341.26 minutes.
+84.76 complete after 341.51 minutes.
+84.82 complete after 341.75 minutes.
+84.88 complete after 342.00 minutes.
+84.95 complete after 342.24 minutes.
+85.01 complete after 342.48 minutes.
+85.07 complete after 342.72 minutes.
+85.13 complete after 342.98 minutes.
+85.20 complete after 343.23 minutes.
+85.26 complete after 343.46 minutes.
+85.32 complete after 343.69 minutes.
+85.39 complete after 343.92 minutes.
+85.45 complete after 344.16 minutes.
+85.51 complete after 344.40 minutes.
+85.57 complete after 344.62 minutes.
+85.64 complete after 344.85 minutes.
+85.70 complete after 345.08 minutes.
+85.76 complete after 345.33 minutes.
+85.83 complete after 345.58 minutes.
+85.89 complete after 345.82 minutes.
+85.95 complete after 346.07 minutes.
+86.02 complete after 346.34 minutes.
+86.08 complete after 346.61 minutes.
+86.14 complete after 346.86 minutes.
+86.20 complete after 347.10 minutes.
+86.27 complete after 347.33 minutes.
+86.33 complete after 347.57 minutes.
+86.39 complete after 347.80 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+86.46 complete after 348.05 minutes.
+86.52 complete after 348.30 minutes.
+86.58 complete after 348.56 minutes.
+86.64 complete after 348.80 minutes.
+86.71 complete after 349.05 minutes.
+86.77 complete after 349.30 minutes.
+86.83 complete after 349.54 minutes.
+86.90 complete after 349.77 minutes.
+86.96 complete after 350.01 minutes.
+87.02 complete after 350.26 minutes.
+87.08 complete after 350.50 minutes.
+87.15 complete after 350.75 minutes.
+87.21 complete after 351.01 minutes.
+87.27 complete after 351.27 minutes.
+87.34 complete after 351.53 minutes.
+87.40 complete after 351.78 minutes.
+87.46 complete after 352.03 minutes.
+87.52 complete after 352.27 minutes.
+87.59 complete after 352.51 minutes.
+87.65 complete after 352.74 minutes.
+87.71 complete after 353.01 minutes.
+87.78 complete after 353.27 minutes.
+87.84 complete after 353.53 minutes.
+87.90 complete after 353.77 minutes.
+87.96 complete after 354.02 minutes.
+88.03 complete after 354.28 minutes.
+88.09 complete after 354.52 minutes.
+88.15 complete after 354.75 minutes.
+88.22 complete after 355.00 minutes.
+88.28 complete after 355.25 minutes.
+88.34 complete after 355.50 minutes.
+88.40 complete after 355.74 minutes.
+88.47 complete after 355.98 minutes.
+88.53 complete after 356.24 minutes.
+88.59 complete after 356.51 minutes.
+88.66 complete after 356.77 minutes.
+88.72 complete after 357.02 minutes.
+88.78 complete after 357.26 minutes.
+88.84 complete after 357.49 minutes.
+88.91 complete after 357.73 minutes.
+88.97 complete after 357.96 minutes.
+89.03 complete after 358.19 minutes.
+89.10 complete after 358.45 minutes.
+89.16 complete after 358.70 minutes.
+89.22 complete after 358.95 minutes.
+89.28 complete after 359.19 minutes.
+89.35 complete after 359.42 minutes.
+89.41 complete after 359.66 minutes.
+89.47 complete after 359.91 minutes.
+89.54 complete after 360.15 minutes.
+89.60 complete after 360.39 minutes.
+89.66 complete after 360.63 minutes.
+89.72 complete after 360.87 minutes.
+89.79 complete after 361.11 minutes.
+89.85 complete after 361.36 minutes.
+89.91 complete after 361.60 minutes.
+89.98 complete after 361.84 minutes.
+90.04 complete after 362.08 minutes.
+90.10 complete after 362.32 minutes.
+90.16 complete after 362.57 minutes.
+90.23 complete after 362.82 minutes.
+90.29 complete after 363.04 minutes.
+90.35 complete after 363.28 minutes.
+90.42 complete after 363.52 minutes.
+90.48 complete after 363.77 minutes.
+90.54 complete after 364.01 minutes.
+90.60 complete after 364.26 minutes.
+90.67 complete after 364.50 minutes.
+90.73 complete after 364.73 minutes.
+90.79 complete after 364.96 minutes.
+90.86 complete after 365.19 minutes.
+90.92 complete after 365.43 minutes.
+90.98 complete after 365.67 minutes.
+91.05 complete after 365.91 minutes.
+91.11 complete after 366.17 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+91.17 complete after 366.44 minutes.
+91.23 complete after 366.67 minutes.
+91.30 complete after 366.91 minutes.
+91.36 complete after 367.15 minutes.
+91.42 complete after 367.38 minutes.
+91.49 complete after 367.62 minutes.
+91.55 complete after 367.85 minutes.
+91.61 complete after 368.08 minutes.
+91.67 complete after 368.33 minutes.
+91.74 complete after 368.56 minutes.
+91.80 complete after 368.79 minutes.
+91.86 complete after 369.02 minutes.
+91.93 complete after 369.28 minutes.
+91.99 complete after 369.53 minutes.
+92.05 complete after 369.80 minutes.
+92.11 complete after 370.09 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+92.18 complete after 370.37 minutes.
+92.24 complete after 370.63 minutes.
+92.30 complete after 370.87 minutes.
+92.37 complete after 371.14 minutes.
+92.43 complete after 371.41 minutes.
+92.49 complete after 371.66 minutes.
+92.55 complete after 371.90 minutes.
+92.62 complete after 372.14 minutes.
+92.68 complete after 372.38 minutes.
+92.74 complete after 372.62 minutes.
+92.81 complete after 372.85 minutes.
+92.87 complete after 373.09 minutes.
+92.93 complete after 373.32 minutes.
+92.99 complete after 373.55 minutes.
+93.06 complete after 373.81 minutes.
+93.12 complete after 374.05 minutes.
+93.18 complete after 374.29 minutes.
+93.25 complete after 374.52 minutes.
+93.31 complete after 374.75 minutes.
+93.37 complete after 374.98 minutes.
+93.43 complete after 375.22 minutes.
+93.50 complete after 375.46 minutes.
+93.56 complete after 375.70 minutes.
+93.62 complete after 375.94 minutes.
+93.69 complete after 376.20 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+93.75 complete after 376.46 minutes.
+93.81 complete after 376.71 minutes.
+93.87 complete after 376.95 minutes.
+93.94 complete after 377.19 minutes.
+94.00 complete after 377.43 minutes.
+94.06 complete after 377.67 minutes.
+94.13 complete after 377.91 minutes.
+94.19 complete after 378.15 minutes.
+94.25 complete after 378.39 minutes.
+94.31 complete after 378.65 minutes.
+94.38 complete after 378.91 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+94.44 complete after 379.16 minutes.
+94.50 complete after 379.40 minutes.
+94.57 complete after 379.65 minutes.
+94.63 complete after 379.88 minutes.
+94.69 complete after 380.13 minutes.
+94.75 complete after 380.38 minutes.
+94.82 complete after 380.62 minutes.
+94.88 complete after 380.86 minutes.
+94.94 complete after 381.11 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+95.01 complete after 381.38 minutes.
+95.07 complete after 381.64 minutes.
+95.13 complete after 381.87 minutes.
+95.19 complete after 382.11 minutes.
+95.26 complete after 382.35 minutes.
+95.32 complete after 382.60 minutes.
+95.38 complete after 382.85 minutes.
+95.45 complete after 383.11 minutes.
+95.51 complete after 383.41 minutes.
+95.57 complete after 383.68 minutes.
+95.64 complete after 383.96 minutes.
+95.70 complete after 384.23 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+95.76 complete after 384.51 minutes.
+95.82 complete after 384.77 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+95.89 complete after 385.09 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+95.95 complete after 385.45 minutes.
+96.01 complete after 385.71 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+96.08 complete after 386.02 minutes.
+96.14 complete after 386.32 minutes.
+96.20 complete after 386.59 minutes.
+96.26 complete after 386.83 minutes.
+96.33 complete after 387.08 minutes.
+96.39 complete after 387.32 minutes.
+96.45 complete after 387.55 minutes.
+96.52 complete after 387.80 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+96.58 complete after 388.08 minutes.
+96.64 complete after 388.36 minutes.
+96.70 complete after 388.62 minutes.
+96.77 complete after 388.89 minutes.
+96.83 complete after 389.16 minutes.
+96.89 complete after 389.43 minutes.
+96.96 complete after 389.69 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+97.02 complete after 389.95 minutes.
+97.08 complete after 390.22 minutes.
+97.14 complete after 390.48 minutes.
+97.21 complete after 390.75 minutes.
+97.27 complete after 391.01 minutes.
+97.33 complete after 391.28 minutes.
+97.40 complete after 391.54 minutes.
+97.46 complete after 391.82 minutes.
+97.52 complete after 392.09 minutes.
+97.58 complete after 392.36 minutes.
+97.65 complete after 392.62 minutes.
+97.71 complete after 392.88 minutes.
+97.77 complete after 393.14 minutes.
+97.84 complete after 393.38 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+97.90 complete after 393.69 minutes.
+97.96 complete after 393.95 minutes.
+98.02 complete after 394.19 minutes.
+98.09 complete after 394.43 minutes.
+98.15 complete after 394.68 minutes.
+98.21 complete after 394.91 minutes.
+98.28 complete after 395.15 minutes.
+98.34 complete after 395.38 minutes.
+98.40 complete after 395.61 minutes.
+98.46 complete after 395.83 minutes.
+98.53 complete after 396.06 minutes.
+98.59 complete after 396.32 minutes.
+98.65 complete after 396.56 minutes.
+98.72 complete after 396.80 minutes.
+98.78 complete after 397.03 minutes.
+98.84 complete after 397.27 minutes.
+98.90 complete after 397.51 minutes.
+98.97 complete after 397.76 minutes.
+99.03 complete after 397.99 minutes.
+99.09 complete after 398.22 minutes.
+99.16 complete after 398.46 minutes.
+99.22 complete after 398.69 minutes.
+99.28 complete after 398.93 minutes.
+99.34 complete after 399.16 minutes.
+99.41 complete after 399.40 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+99.47 complete after 399.63 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+99.53 complete after 400.15 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+99.60 complete after 400.54 minutes.
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+99.66 complete after 400.90 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+Desired error not necessarily achieved due to precision loss.
+----  Exception  ----
+
+----
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+99.72 complete after 401.24 minutes.
+99.78 complete after 401.55 minutes.
+99.85 complete after 401.83 minutes.
+99.91 complete after 402.13 minutes.
+Maximum number of function evaluations has been exceeded.
+----  Exception  ----
+
+----
+99.97 complete after 402.45 minutes.
+0.9991637429106777
+TARGETID ROSETTE BGS_Z_SUCCESS INSAMPLE BGS_Z_WEIGHT BGS_A_WEIGHT        VOLUME               MRH              REF_GMR0P1          REF_GMR0P0              ZMAX                  IVMAX                 VONVMAX       
+-------- ------- ------------- -------- ------------ ------------ ------------------- ------------------- ------------------- ------------------- ---------------------- ---------------------- ---------------------
+       0   -99.0           1.0      1.0          1.0          1.0  16409807.343780374  -17.39729842584402  0.5706801657915367  0.5319278986852018    0.07802796226295215  1.557523032753971e-08    0.2555865290099319
+       1   -99.0           1.0      1.0          1.0          1.0   7869660143.534193  -21.42845329908612  0.5560876941825513  0.5245845025978818     0.5149494637177621  2.606542366803503e-11    0.2051260257646681
+       2   -99.0           1.0      1.0          1.0          1.0   2200988301.071046 -21.109190687375566  0.8399983738258814  0.7703383967436309     0.3370816456407112 1.1947462991215985e-10    0.2629622627114567
+       3   -99.0           1.0      1.0          1.0          1.0   7464165470.660195 -21.580878134418448  0.8329401903766268   0.768812270083069     0.3971428496653372  6.671148360781645e-11   0.49794555244197725
+       4   -99.0           1.0      1.0          1.0          1.0  30735561828.278416  -21.67433600239021  0.6111636873574794  0.5710547018753381     0.5507868130684358 2.0371040155974714e-11    0.6261153642203032
+       5   -99.0           1.0      1.0          1.0          1.0   60079493.25774407  -16.82318772454439  0.4539379421110262  0.4343482307910662   0.060242143445876147 3.5203943778031295e-08    2.1150351028582324
+       6   -99.0           1.0      1.0          1.0          1.0  17414296918.661625 -21.727632372627923  0.6837061245354721  0.6445974249121365      0.433950912205383  4.851882974777558e-11    0.8449213073737563
+       7   -99.0           1.0      1.0          1.0          1.0   6236.618362271495  -12.45866347498344 -0.6929039075736543 -0.6594678064006539   0.008174203089765797   1.59328745672731e-05   0.09936725809002392
+       8   -99.0           1.0      1.0          1.0          1.0    51437571.3437664 -19.149496401768932  0.5625237813728928  0.5262410742274964     0.1764817877863543 1.1001221322582412e-09  0.056587610664889695
+       9   -99.0           1.0      1.0          1.0          1.0   216525601.9243184 -18.844296823554515 0.48855903419104374 0.46480143628739795    0.15409639502355238 1.7262302856365158e-09    0.3737730516574347
+     ...     ...           ...      ...          ...          ...                 ...                 ...                 ...                 ...                    ...                    ...                   ...
+  159031   -99.0           1.0      1.0          1.0          1.0  -123.6494475379309                 nan 0.28092532102312723 0.28486858332824444 1.2732925824820995e-12  -0.008820200694790507    1.0906129430845204
+  159032   -99.0           1.0      1.0          1.0          1.0  -46.34487867733035 -10.932734858511779 0.27760410825420934 0.28217621857293157   0.004060874967763084 0.00013298524803561116 -0.006163185186085084
+  159033   -99.0           1.0      1.0          1.0          1.0 -115.13851170465338                 nan 0.29127890342956403  0.2931845234101032 1.2732925824820995e-12  -0.008820200694790507    1.0155447809345286
+  159034   -99.0           1.0      1.0          1.0          1.0 -113.62398594590044                 nan 0.28018661676678436  0.2842697269818996 1.2732925824820995e-12  -0.008820200694790507     1.002186359784898
+  159035   -99.0           1.0      1.0          1.0          1.0 -114.57722352393367                 nan  0.2539329347867049 0.26317549726834943 1.2732925824820995e-12  -0.008820200694790507    1.0105941065329669
+  159036   -99.0           1.0      1.0          1.0          1.0  -92.44566684725686  -7.634601479906841 0.27333267207690687  0.2787462707388526  0.0008909589448080624  -0.029957633120398636    2.7694533709807203
+  159037   -99.0           1.0      1.0          1.0          1.0 -113.52628507297449                 nan  0.3225394915770379  0.3195798081682704 1.2732925824820995e-12  -0.008820200694790507    1.0013246184776348
+  159038   -99.0           1.0      1.0          1.0          1.0 -113.37599212386769  1.3930718890097327 0.36770009067021125  0.3582325892501992 1.3949218397613113e-05  -0.008820224527488657    1.0000017065592985
+  159039   -99.0           1.0      1.0          1.0          1.0  -113.4583639081559                 nan 0.26000519518441645  0.2680504452731991 1.2732925824820995e-12  -0.008820200694790507    1.0007255401725108
+  159040   -99.0           1.0      1.0          1.0          1.0 -113.37700784749069                 nan 0.25601934933163084  0.2648447089397165 1.2732925824820995e-12  -0.008820200694790507     1.000007963389706
+  159041   -99.0           1.0      1.0          1.0          1.0 -112.00213367263873  -5.706399655667148 0.24981127328950742 0.25984497415716423   0.000366921883141913    -0.0092768013862719    1.0390215489197454
+Length = 159042 rows
+Finished writing to /global/cscratch1/sd/mjwilson/desi/BGS/lumfn//GAMA/bright_derived_v0.0.fits

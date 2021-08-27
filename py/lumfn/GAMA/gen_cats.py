@@ -2,14 +2,14 @@ import os
 import sys
 import time
 import fitsio
-import pylab             as     pl 
-import numpy             as     np
-import astropy.io.fits   as     fits
+import pylab              as     pl 
+import numpy              as     np
+import astropy.io.fits    as     fits
 
-from   astropy.table     import Table, join, vstack, unique, hstack
-from   desitarget.sv3    import sv3_targetmask
-from   matplotlib.pyplot import figure
-from   scipy.optimize    import curve_fit
+from   astropy.table      import Table, join, vstack, unique, hstack
+from   desitarget.sv3     import sv3_targetmask
+from   matplotlib.pyplot  import figure
+from   scipy.optimize     import curve_fit
 
 sys.path.append('/global/homes/m/mjwilson/desi/BGS/lumfn/bin')
 sys.path.append('/global/homes/m/mjwilson/desi/BGS/lumfn/py/')
@@ -18,21 +18,23 @@ sys.path.append('/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/')
 sys.path.append('/global/homes/m/mjwilson/desi/LSS/bin/')
 sys.path.append('/global/homes/m/mjwilson/desi/LSS/py/')
 
-from   distances         import comoving_distance, comoving_volume
-from   ajs_kcorr         import ajs_kcorr
-from   abs_mag           import abs_mag
-from   vmax              import zmax, vmax
-from   ref_gmr           import one_reference_gmr
-from   LSS.SV3.cattools  import tile2rosette  
-from   params            import params
-from   zmin              import zmin
-from   rlim              import rlim
-from   desitarget.cuts   import notinBGS_mask
+from   distances          import comoving_distance, comoving_volume
+from   ajs_kcorr          import ajs_kcorr
+from   abs_mag            import abs_mag
+from   vmax               import zmax, vmax
+from   ref_gmr            import one_reference_gmr
+from   LSS.SV3.cattools   import tile2rosette  
+from   params             import params
+from   zmin               import zmin
+from   rlim               import rlim
+from   desitarget.cuts    import notinBGS_mask
+from   GAMA.define_sample import define_sample
+
 
 fsky             = 1.0 # En lieu of the right answer. 
 version          = 0.0
-todisk           = True
-dryrun           = False
+todisk           = False
+dryrun           = True
 runtime_lim      = 0.1 # only if dryrun. 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
@@ -123,7 +125,7 @@ for ii, row in enumerate(bright_merge_obs):
 
     zsuccess = row['BGS_Z_SUCCESS']
 
-    insample = True
+    insample = define_sample(row)
     
     void     = [tid, ros, zsuccess, False, zwght, awght, -99., -99., -99., -99., -99., -99., -99.]
 

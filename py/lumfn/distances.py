@@ -6,11 +6,13 @@ from   astropy.cosmology import FlatLambdaCDM
 
 cosmo = FlatLambdaCDM(H0=100. * params['h'], Om0=params['Om'], Tcmb0=2.725)
 
-def comoving_distance(zz=0.1):
-    return params['h'] * cosmo.luminosity_distance(zz).value
+def comoving_distance(zz):
+    return params['h'] * cosmo.comoving_distance(zz).value
 
-def dist_mod(chi):
-    return 5. * np.log10(chi) + 25.
+def dist_mod(zz):
+    lumdist = params['h'] * cosmo.luminosity_distance(zz).value
+
+    return 5. * np.log10(lumdist) + 25.
     
 def comoving_volume(min_z, max_z, fsky):
      xmax3 = comoving_distance(max_z) ** 3.
@@ -22,7 +24,7 @@ if __name__ == '__main__':
     zs  = np.arange(0.0, 2.0, 0.01)
     
     xs  = comoving_distance(zz=zs) # [Mpc/h]
-    mus = dist_mod(xs)
+    mus = dist_mod(zs)
 
     pl.plot(zs, mus)
     pl.show()
