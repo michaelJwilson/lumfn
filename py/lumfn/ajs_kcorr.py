@@ -100,7 +100,7 @@ class ajs_kcorr():
         return res
 
     def __eval(self, ref_gmr, zz, band, ref_z=params['ref_z'], res=None, ecorr=True):
-        # Applies reference z shift.
+        # Note: ref_gmr is always in the native reference (z=0.1); 
         if res == None:
             res       = self.ref_eval(ref_gmr, zz, band)
 
@@ -109,7 +109,9 @@ class ajs_kcorr():
             res      -= shift
 
         if ecorr & (ref_z == 0.0):
-            tt        = 'blue' if (ref_gmr <= params['rf_gmr_redblue']) else 'red'
+            tmr_gmr   = ref_gmr + self.ref_eval(ref_gmr, 0.0, 'g') - self.ref_eval(ref_gmr, 0.0, 'r') 
+            
+            tt        = 'blue' if (tmr_gmr <= params['rf_gmr_redblue']) else 'red'
             res      += tmr_ecorr(zz, tt=tt, zref=ref_z, band=band)
 
         elif ecorr & (ref_z != 0.0):

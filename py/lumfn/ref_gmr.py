@@ -11,11 +11,15 @@ from   scipy.optimize import brentq, minimize
 from   params         import params
 
 def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
-     # Calling signature: ajs_kcorr.eval(self, ref_gmr, zz, band, ref_z=0.1)
+     assert  np.isin(zref, [0.0, 0.1])
+
      def diff(x):
-          # Here, x is the ref_color to be solved for. 
-          obs  = x - kcorr.eval(x, zref, band='g', ref_z=zref, ecorr=ecorr) + kcorr.eval(x, zref, band='r', ref_z=zref, ecorr=ecorr)
-          obs += kcorr.eval(x, z, band='g', ref_z=zref, ecorr=ecorr) - kcorr.eval(x, z, band='r', ref_z=zref, ecorr=ecorr)
+          # Here, x is the ref_color to be solved for in the native
+          # reference, i.e. z=0.1 for AJS. 
+          obs  = x
+                    
+          obs += kcorr.ref_eval(x, z, band='g', ref_z=zref, ecorr=ecorr)
+          obs -= kcorr.ref_eval(x, z, band='r', ref_z=zref, ecorr=ecorr)
 
           return (gmr - obs)
 
@@ -38,6 +42,10 @@ def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
 
             raise RuntimeError()
 
+     if zref == 0.0:
+          shift   = kcorr.ref_eval(result, 0.0, band='g', ecorr=False) - kcorr.ref_eval(result, 0.0, band='r', ecorr=False)
+          result += shift
+       
      return  result
 
 def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z'], ecorr=True):

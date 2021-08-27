@@ -7,9 +7,10 @@ from   ajs_kcorr         import ajs_kcorr
 from   abs_mag           import abs_mag, app_mag
 from   scipy.optimize    import brentq, minimize
 from   params            import params
+from   zmin              import zmin
 from   ref_gmr           import reference_gmr
 
-def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lolim=0.01, hilim=0.7, ref_gmr=None, distance_only=False, ecorr=True):
+def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lolim=zmin(params['vmin']), hilim=0.7, ref_gmr=None, distance_only=False, ecorr=True):
     if ref_gmr == None:
         ref_gmr = reference_gmr(kcorr, obs_gmr, redshift, zref=ref_z, ecorr=ecorr)
     
@@ -45,9 +46,9 @@ def zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=params['ref_z'], lo
               
     return  result
 
-def vmax(kcorr, rlim, Mh, obs_gmr, redshift, fsky, band='r', ref_z=params['ref_z'], min_z=1.e-16, max_z=None, distance_only=False, ecorr=True):
+def vmax(kcorr, rlim, Mh, obs_gmr, redshift, fsky, band='r', ref_z=params['ref_z'], min_z=zmin(params['vmin']), max_z=None, ref_gmr=None, distance_only=False, ecorr=True):
     if max_z == None:
-        max_z = zmax(kcorr, rlim, Mh, obs_gmr, redshift, band='r', ref_z=ref_z, distance_only=distance_only, ecorr=ecorr)
+        max_z = zmax(kcorr, rlim, Mh, obs_gmr, redshift, band=band, ref_z=ref_z, ref_gmr=ref_gmr, distance_only=distance_only, ecorr=ecorr)
     
     return  comoving_volume(min_z, max_z, fsky)
 

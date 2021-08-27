@@ -1,6 +1,14 @@
 import numpy as np
 
-def schechter(M, log10phistar=-2.01, Mstar=-20.89, alpha=-1.25):
+from   data.schechters import schechters
+
+def schechter(M, named_type='TMR'):
+    params       = schechters[named_type]
+    
+    log10phistar = params['log10phistar']
+    Mstar        = params['Mstar']
+    alpha        = params['alpha'] 
+    
     phistar = 10. ** log10phistar
 
     expa    = 10. ** (0.4 * (Mstar - M) * (1. + alpha))

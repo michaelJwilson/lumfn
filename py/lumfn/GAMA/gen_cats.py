@@ -29,12 +29,12 @@ from   zmin               import zmin
 from   rlim               import rlim
 from   desitarget.cuts    import notinBGS_mask
 from   GAMA.define_sample import define_sample
+from   GAMA.gama_params   import gama_params
 
 
-fsky             = 1.0 # En lieu of the right answer. 
-version          = 0.0
-todisk           = False
-dryrun           = True
+version          = 0.1
+todisk           = True
+dryrun           = False
 runtime_lim      = 0.1 # only if dryrun. 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
@@ -118,7 +118,7 @@ for ii, row in enumerate(bright_merge_obs):
     psys     = 'S'
     
     #  See dedicated fsky calc. notebook. 
-    vol      = comoving_volume(zmin(params['vmin']), zz, fsky=fsky)
+    vol      = comoving_volume(zmin(params['vmin']), zz, fsky=gama_params['fsky'])
     
     zwght    = row['BGS_Z_WEIGHT']
     awght    = row['BGS_A_WEIGHT']
@@ -139,7 +139,7 @@ for ii, row in enumerate(bright_merge_obs):
 
             maxz    = zmax(kcorrector, rlim(psys), Mrh, gmr, zz, ref_gmr=ref_gmr)
     
-            maxv    = vmax(kcorrector, rlim(psys), Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=fsky, max_z=maxz)        
+            maxv    = vmax(kcorrector, rlim(psys), Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=gama_params['fsky'], max_z=maxz)        
     
             vonvmax = (vol / maxv)
             

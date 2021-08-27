@@ -19,7 +19,7 @@ sys.path.append('/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/')
 sys.path.append('/global/homes/m/mjwilson/desi/LSS/bin/')
 sys.path.append('/global/homes/m/mjwilson/desi/LSS/py/')
 
-from   distances          import comoving_distance, comoving_volume
+from   distances          import comoving_distance, comoving_volume, dist_mod
 from   ajs_kcorr          import ajs_kcorr
 from   abs_mag            import abs_mag
 from   vmax               import zmax, vmax
@@ -36,10 +36,10 @@ fpath = root + "galaxy_catalogue_small.hdf5"
 
 print(fpath)
 
-version          = 0.0
+version          = 0.2
 todisk           = True
-dryrun           = False
-runtime_lim      = 1.0 # only if dryrun.                                                                                                                                                                                                       
+dryrun           = True
+runtime_lim      = 2. # only if dryrun.                                                                                                                                                                                                       
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 print(version, odir)
@@ -78,6 +78,7 @@ print(gmr)
 '''
 mxxl         = Table(np.c_[ra, dec, z, r, Mrh, gmr], names=['RA', 'DEC', 'Z', 'RMAG_DRED', 'MRH', 'REFGMR0P1'])
 mxxl         = mxxl[define_sample(mxxl)]
+mxxl['TARGETID'] = np.arange(len(mxxl)).astype(np.int64)
 
 if todisk:
     mxxl.write('{}/MXXL/bright_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
@@ -87,12 +88,15 @@ kcorrector   = ajs_kcorr()
 derived      = []
 start        = time.time()
 
+tids         = []
+
 for ii, row in enumerate(mxxl):
-    tid      = ii
+    tids.append(row['TARGETID'])
     
     rmag     = row['RMAG_DRED']
     zz       = row['Z']
-
+    
+    # Needed to define r mag. limit (at 19.5 for S).
     psys     = 'S'
 
     insample = define_sample(row)
@@ -103,13 +107,18 @@ for ii, row in enumerate(mxxl):
     # one_reference_gmr(kcorrector, gmr, zz, zref=kcorrector.z0, ecorr=False)                                                                                                                                                                
     org_gmr = row['REFGMR0P1']
     
-    Mrh     = abs_mag(kcorrector, rmag, None, zz, ref_gmr=org_gmr, ref_z=0.1, ecorr=False).item()
+    gmr     = org_gmr + kcorrector.ref_eval(org_gmr, zz, band='g')[0] - kcorrector.ref_eval(org_gmr, zz, band='r')[0]
+    
+    Mrh     = abs_mag(kcorrector, rmag, None, zz, ref_gmr=org_gmr, ref_z=mxxl_params['ref_z'], ecorr=False).item()
 
-    maxz    = zmax(kcorrector, rlim(psys), Mrh, None, zz, ref_gmr=org_gmr, ref_z=0.1, ecorr=False)
+    maxz    = zmax(kcorrector, rlim(psys), Mrh, None, zz, ref_gmr=org_gmr, ref_z=mxxl_params['ref_z'], ecorr=False)
 
-    maxv    = vmax(kcorrector, rlim(psys), Mrh, None, zz, ref_z=0.1, min_z=zmin(params['vmin']), fsky=mxxl_params['fsky'], max_z=maxz)
+    maxv    = vmax(kcorrector, rlim(psys), Mrh, None, zz, ref_z=mxxl_params['ref_z'], min_z=zmin(params['vmin']), fsky=mxxl_params['fsky'], max_z=maxz)
 
-    derived.append([tid, insample, vol, Mrh, maxz, 1. / maxv])
+    mu      = dist_mod(maxz)
+    rk      = kcorrector.ref_eval(org_gmr, maxz, band='r')[0]
+    
+    derived.append([insample, mu, vol, Mrh, rk, gmr, maxz, 1. / maxv])
 
     if not (ii % 100):
         runtime = (time.time()-start) / 60.
@@ -121,7 +130,8 @@ for ii, row in enumerate(mxxl):
         if dryrun & (runtime > runtime_lim):
             break
 
-derived = Table(np.array(derived), names=['TARGETID', 'INSAMPLE', 'VOLUME', 'MRH', 'ZMAX', 'IVMAX'])
+derived = Table(np.array(derived), names=['INSAMPLE', 'DISTMOD_ZMAX', 'VOLUME', 'MRH', 'RKCORR_ZMAX', 'GMR_DRED', 'ZMAX', 'IVMAX'])
+derived['TARGETID'] = np.array(tids, dtype=np.int64)
 derived.pprint(max_width=-1)
 
 if todisk:
