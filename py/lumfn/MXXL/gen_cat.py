@@ -32,23 +32,25 @@ from   MXXL.mxxl_params   import mxxl_params
 
 
 root  = "/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/MXXL/"
-fpath = root + "galaxy_catalogue_small.hdf5"
+
+# fpath = root + "galaxy_catalogue_small.hdf5"
+fpath = root + "galaxy_catalogue_sv3s.fits"
 
 print(fpath)
 
-version          = 0.2
+version          = 0.3
 todisk           = True
-dryrun           = True
+dryrun           = False
 runtime_lim      = 2. # only if dryrun.                                                                                                                                                                                                       
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 print(version, odir)
-
+'''
 f   = h5py.File(fpath, mode='r')
 
 ra  = f["Data/ra"][...]
 dec = f["Data/dec"][...]
-z   = f["Data/z_obs"][...]
+z   = f["Data/z_cos"][...]
 r   = f["Data/app_mag"][...]
 
 # Absolute magnitude: k-corrected to the r at z=0.1 band but no E.
@@ -57,27 +59,15 @@ Mrh = f["Data/abs_mag"][...]
 gmr = f["Data/g_r"][...]
 
 f.close()
+
+
+mxxl             = Table(np.c_[ra, dec, z, r, Mrh, gmr], names=['RA', 'DEC', 'Z', 'RMAG_DRED', 'MRH', 'REFGMR0P1'])
 '''
-print("RA:")
-print(ra)
 
-print("Dec:")
-print(dec)
+mxxl             = Table.read(fpath)
+mxxl             = mxxl[np.isin(mxxl['NMOCK'].data, np.arange(0, 5, 1))]
 
-print("z:")
-print(z)
-
-print("App mag:")
-print(r)
-
-print("Abs mag:")
-print(Mrh)
-
-print("(g-r)")
-print(gmr)
-'''
-mxxl         = Table(np.c_[ra, dec, z, r, Mrh, gmr], names=['RA', 'DEC', 'Z', 'RMAG_DRED', 'MRH', 'REFGMR0P1'])
-mxxl         = mxxl[define_sample(mxxl)]
+mxxl             = mxxl[define_sample(mxxl)]
 mxxl['TARGETID'] = np.arange(len(mxxl)).astype(np.int64)
 
 if todisk:

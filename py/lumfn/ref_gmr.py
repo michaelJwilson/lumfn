@@ -18,8 +18,8 @@ def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
           # reference, i.e. z=0.1 for AJS. 
           obs  = x
                     
-          obs += kcorr.ref_eval(x, z, band='g', ref_z=zref, ecorr=ecorr)
-          obs -= kcorr.ref_eval(x, z, band='r', ref_z=zref, ecorr=ecorr)
+          obs += kcorr.ref_eval(x, z, band='g')
+          obs -= kcorr.ref_eval(x, z, band='r')
 
           return (gmr - obs)
 
@@ -43,7 +43,7 @@ def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
             raise RuntimeError()
 
      if zref == 0.0:
-          shift   = kcorr.ref_eval(result, 0.0, band='g', ecorr=False) - kcorr.ref_eval(result, 0.0, band='r', ecorr=False)
+          shift   = kcorr.ref_eval(result, 0.0, band='g') - kcorr.ref_eval(result, 0.0, band='r')
           result += shift
        
      return  result

@@ -32,13 +32,21 @@ from   zmin              import zmin
 from   sv3_params        import sv3_params
 from   rlim              import rlim
 
-version          = 0.4
-todisk           = True
-dryrun           = False
+version          = 0.0
+todisk           = False
+dryrun           = True
 runtime_lim      = 1.0 # only if dryrun. 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
 print(version, odir)
+
+Base files:
+
+/global/cfs/cdirs/desi/survey/catalogs/main/LSS/daily/datcomb_bright_spec_zdone.fits
+/global/cfs/cdirs/desi/survey/catalogs/main/LSS/BGS_ANYtargetsDR9v1.1.1.fits
+
+---------------------------------------------------------------------------------------------------------
+
 
 # Targeting info. cut to (enlarged) area around rosettes.
 targ             = Table.read('/global/cfs/cdirs/desi/survey/catalogs/SV3/LSS/bright_targets.fits')
