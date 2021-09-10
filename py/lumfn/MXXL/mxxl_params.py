@@ -1,1 +1,1 @@
-mxxl_params = {'fsky': 0.002424, 'ref_z': 0.1}
+mxxl_params = {'fsky': 1.0, 'ref_z': 0.1}

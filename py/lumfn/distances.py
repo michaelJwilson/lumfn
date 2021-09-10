@@ -15,9 +15,9 @@ def dist_mod(zz):
     return 5. * np.log10(lumdist) + 25.
     
 def comoving_volume(min_z, max_z, fsky):
-     xmax3 = comoving_distance(max_z) ** 3.
      xmin3 = comoving_distance(min_z) ** 3.
-
+     xmax3 = comoving_distance(max_z) ** 3.
+     
      return (4. * np.pi * fsky / 3.) * (xmax3 - xmin3)
 
 if __name__ == '__main__':

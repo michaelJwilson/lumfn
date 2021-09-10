@@ -3,16 +3,12 @@ import numpy          as     np
 import pylab          as     pl 
 
 from   distances      import comoving_distance, dist_mod
-
-from   ajs_kcorr      import ajs_kcorr
-
-from   tmr_kcorr      import tmr_kcorr
 from   scipy.optimize import brentq, minimize
-from   params         import params
 
-def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
-     assert  np.isin(zref, [0.0, 0.1])
 
+def ajs_reference_gmr(kcorr, gmr, z):
+     assert kcorr.z0 ==	0.1
+     
      def diff(x):
           # Here, x is the ref_color to be solved for in the native
           # reference, i.e. z=0.1 for AJS. 
@@ -42,13 +38,17 @@ def one_reference_gmr(kcorr, gmr, z, zref=params['ref_z'], ecorr=True):
 
             raise RuntimeError()
 
-     if zref == 0.0:
-          shift   = kcorr.ref_eval(result, 0.0, band='g') - kcorr.ref_eval(result, 0.0, band='r')
-          result += shift
-       
      return  result
 
-def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z'], ecorr=True):
+def tmr_reference_gmr(kcorr, ajs_ref_gmr):
+     assert kcorr.z0 == 0.1
+     
+     # E has no affect on colors (assumption).
+     shift  = kcorr.ref_eval(ajs_ref_gmr, 0.0, band='g') - kcorr.ref_eval(ajs_ref_gmr, 0.0, band='r')
+
+     return ajs_ref_gmr + shift
+     
+def reference_gmr(kcorr, gmrs, zs):
      result = []
 
      zs     = np.atleast_1d(np.array(zs, copy=True))
@@ -58,7 +58,7 @@ def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z'], ecorr=True):
           row = []
           
           for zz in zs:
-               row.append(one_reference_gmr(kcorr, gmr, zz, zref=params['ref_z'], ecorr=ecorr))
+               row.append(ajs_reference_gmr(kcorr, gmr, zz))
 
           result.append(row)
 
@@ -66,6 +66,10 @@ def reference_gmr(kcorr, gmrs, zs, zref=params['ref_z'], ecorr=True):
 
 
 if __name__ == '__main__':
+     from   ajs_kcorr      import ajs_kcorr
+     from   tmr_kcorr      import tmr_kcorr
+
+     
      x       = ajs_kcorr()  # [ajs_kcorr, tmr_kcorr]                                                                                                                                                           
      zz      =   0.2
 

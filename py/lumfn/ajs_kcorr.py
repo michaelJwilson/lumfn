@@ -6,7 +6,7 @@ from   astropy.table     import Table
 from   scipy.interpolate import interp1d
 from   scipy.stats       import linregress
 from   tmr_ecorr         import tmr_ecorr
-from   params            import params
+from   ref_gmr           import tmr_reference_gmr
 
 # See: https://arxiv.org/pdf/1409.4681.pdf
 #      https://arxiv.org/pdf/1701.06581.pdf
@@ -46,9 +46,12 @@ class ajs_kcorr():
 
         self.prep_extrap()
                     
-        self.eval    = np.vectorize(self.__eval)
+        self.eval = np.vectorize(self.ref_eval)
         
     def _eval(self, ref_gmr, zz, band):
+        '''
+        Base A * z^n sum. 
+        '''
         zz           = np.atleast_1d(np.array(zz, copy=True)) 
         
         # Clip passed observed color. 
@@ -99,28 +102,11 @@ class ajs_kcorr():
 
         return res
 
-    def __eval(self, ref_gmr, zz, band, ref_z=params['ref_z'], res=None, ecorr=True):
-        # Note: ref_gmr is always in the native reference (z=0.1); 
-        if res == None:
-            res       = self.ref_eval(ref_gmr, zz, band)
+    def shift_refz(self, nativek, ref_gmr, ref_z, band):
+        shift         = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
 
-        if ref_z != self.z0:
-            shift     = self.ref_eval(ref_gmr, ref_z, band) + 2.5 * np.log10(1. + ref_z)
-            res      -= shift
-
-        if ecorr & (ref_z == 0.0):
-            tmr_gmr   = ref_gmr + self.ref_eval(ref_gmr, 0.0, 'g') - self.ref_eval(ref_gmr, 0.0, 'r') 
-            
-            tt        = 'blue' if (tmr_gmr <= params['rf_gmr_redblue']) else 'red'
-            res      += tmr_ecorr(zz, tt=tt, zref=ref_z, band=band)
-
-        elif ecorr & (ref_z != 0.0):
-            raise ValueError('E-correction only defined for a reference z of 0.0;')
-
-        else:
-            pass
-
-        return  res
+        return nativek - shift
+    
     
 if __name__ == '__main__':
     import pylab as pl
@@ -140,8 +126,8 @@ if __name__ == '__main__':
         gks = x._eval(ref_gmr, zs, 'g')
         rks = x._eval(ref_gmr, zs, 'r')
         
-        axes[0].plot(zs, rks, label='', alpha=0.25, c=color)
-        axes[1].plot(zs, gks, label='', alpha=0.25, c=color)
+        # axes[0].plot(zs, rks, label='', alpha=0.25, c=color)
+        # axes[1].plot(zs, gks, label='', alpha=0.25, c=color)
 
         gks = x.ref_eval(ref_gmr, zs, 'g')
         rks = x.ref_eval(ref_gmr, zs, 'r')
@@ -149,14 +135,16 @@ if __name__ == '__main__':
         axes[0].plot(zs, rks, '--', c=color, alpha=0.25)
         axes[1].plot(zs, gks, '--', c=color, alpha=0.25)
 
-        gks = x.eval(ref_gmr, zs, 'g', ref_z=0.00, ecorr=False)
-        rks = x.eval(ref_gmr, zs, 'r', ref_z=0.00, ecorr=False)
+        gks = x.shift_refz(gks, ref_gmr, ref_z=0.0, band='g')
+        rks = x.shift_refz(rks, ref_gmr, ref_z=0.0, band='r')
+        
+        axes[0].plot(zs, rks, '-', c=color, alpha=0.25)
+        axes[1].plot(zs, gks, '-', c=color, alpha=0.25)
 
-        axes[0].plot(zs, rks, '--', c=color)
-        axes[1].plot(zs, gks, '--', c=color)
+        tmr_ref_gmr = tmr_reference_gmr(x, ref_gmr)
 
-        gks = x.eval(ref_gmr, zs, 'g', ref_z=0.00, ecorr=True)
-        rks = x.eval(ref_gmr, zs, 'r', ref_z=0.00, ecorr=True)
+        gks += tmr_ecorr(zs, tmr_ref_gmr)
+        rks += tmr_ecorr(zs, tmr_ref_gmr)
 
         axes[0].plot(zs, rks, c=color, label='ref. (g-r)={:.2f}'.format(ref_gmr))
         axes[1].plot(zs, gks, c=color)
@@ -167,7 +155,7 @@ if __name__ == '__main__':
     for ax in axes:
         ax.set_xlabel(r"$z$")
         ax.set_xlim(-0.01,0.6)
-        ax.set_ylim(-0.4,1)
+        ax.set_ylim(-1.,1.)
         ax.legend(loc=2, frameon=False)
 
     pl.show()

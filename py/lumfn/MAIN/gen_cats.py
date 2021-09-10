@@ -184,7 +184,9 @@ for ii, row in enumerate(bright_merge_obs):
             ref_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
 
             maxz    = zmax(kcorrector, rlim(psys), Mrh, gmr, zz, ref_gmr=ref_gmr)
-    
+
+            maxz    = np.minimum(maxz, params['zmax'])
+            
             maxv    = vmax(kcorrector, rlim(psys), Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=sv3_params['fsky'], max_z=maxz)        
     
             vonvmax = (vol / maxv)

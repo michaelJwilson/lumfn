@@ -32,9 +32,9 @@ from   GAMA.define_sample import define_sample
 from   GAMA.gama_params   import gama_params
 
 
-version          = 0.1
+version          = 0.2
 todisk           = True
-dryrun           = False
+dryrun           = True
 runtime_lim      = 0.1 # only if dryrun. 
 odir             = os.environ['CSCRATCH'] + '/desi/BGS/lumfn/'
 
@@ -135,10 +135,12 @@ for ii, row in enumerate(bright_merge_obs):
 
             org_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=kcorrector.z0, ecorr=False)
             
-            ref_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
+            ref_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])[0]
 
             maxz    = zmax(kcorrector, rlim(psys), Mrh, gmr, zz, ref_gmr=ref_gmr)
-    
+
+            maxz    = np.minimum(maxz, params['zmax'])
+            
             maxv    = vmax(kcorrector, rlim(psys), Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=gama_params['fsky'], max_z=maxz)        
     
             vonvmax = (vol / maxv)

@@ -32,7 +32,7 @@ from   zmin              import zmin
 from   sv3_params        import sv3_params
 from   rlim              import rlim
 
-version          = 0.4
+version          = 0.5
 todisk           = True
 dryrun           = False
 runtime_lim      = 1.0 # only if dryrun. 
@@ -47,8 +47,12 @@ targ             = Table.read('/global/cfs/cdirs/desi/survey/catalogs/SV3/LSS/br
 bgs_bright       = targ[(sv3_targetmask.bgs_mask['BGS_BRIGHT'] & targ['SV3_BGS_TARGET']) != 0]
 
 # left outer join of reachable targets and spectro.
-# cut to BGS Bright. 
-bright_merge     = Table.read('/global/cfs/cdirs/desi/survey/catalogs/SV3/LSS/daily/datcomb_bright_tarspecwdup_Alltiles.fits')
+# cut to BGS Bright.
+#
+# fpath = '/global/cfs/cdirs/desi/survey/catalogs/SV3/LSS/daily/datcomb_bright_tarspecwdup_Alltiles.fits'
+fpath = '/global/cfs/cdirs/desi/survey/catalogs/SV3/LSS/everest/LSScats/test/BGS_ANYAlltiles_full.dat.fits'
+
+bright_merge     = Table.read(fpath)
 bright_merge     = bright_merge[(sv3_targetmask.bgs_mask['BGS_BRIGHT'] & bright_merge['SV3_BGS_TARGET']) != 0]
 
 #  Clustering cat:
@@ -56,7 +60,7 @@ bright_merge     = bright_merge[(sv3_targetmask.bgs_mask['BGS_BRIGHT'] & bright_
 # /global/cfs/cdirs/desi/survey/catalogs/SV3/LSS/LSScats/v0.1/BGS_BRIGHTAlltiles_clustering.dat.fits
 
 # one shot only. 
-bright_merge     = bright_merge[bright_merge['PRIORITY'] == 102100]
+bright_merge     = bright_merge[bright_merge['PRIORITY_INIT'] == 102100]
 
 # Add targeting info. (fluxes & colors).
 bright_merge     = join(bright_merge, bgs_bright['FIBERFLUX_R', 'FLUX_G', 'FLUX_R', 'MW_TRANSMISSION_G', 'MW_TRANSMISSION_R', 'TARGETID', 'PHOTSYS', 'REF_CAT', 'BRICK_OBJID', 'BRICKID'], join_type='left', keys='TARGETID')
@@ -133,6 +137,8 @@ bright_merge_obs.pprint()
 if todisk:
     bright_merge_obs.write('{}bright_sv3_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
 
+exit(0)
+    
 ## 
 derived      = []
 
@@ -176,7 +182,9 @@ for ii, row in enumerate(bright_merge_obs):
             ref_gmr = one_reference_gmr(kcorrector, gmr, zz, zref=params['ref_z'])
 
             maxz    = zmax(kcorrector, rlim(psys), Mrh, gmr, zz, ref_gmr=ref_gmr)
-    
+
+            maxz    = np.minimum(maxz, params['zmax'])
+            
             maxv    = vmax(kcorrector, rlim(psys), Mrh, gmr, zz, min_z=zmin(params['vmin']), fsky=sv3_params['fsky'], max_z=maxz)        
     
             vonvmax = (vol / maxv)
