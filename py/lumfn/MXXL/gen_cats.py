@@ -36,11 +36,11 @@ from   MXXL.mxxl_params   import mxxl_params
 root  = "/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/MXXL/"
 
 # fpath = root + "galaxy_catalogue_small.hdf5"
-fpath = root + "galaxy_catalogue_sv3s.fits"
+fpath = root + "galaxy_catalogue_sv3s_v3.fits"
 
 print(fpath)
 
-version          = 0.6
+version          = 0.7
 todisk           = True
 dryrun           = False
 tmr              = False
@@ -72,10 +72,11 @@ mxxl             = Table.read(fpath)
 mxxl             = mxxl[np.isin(mxxl['NMOCK'].data, np.arange(0, 5, 1))]
 
 mxxl             = mxxl[define_sample(mxxl)]
-mxxl['TARGETID'] = np.arange(len(mxxl)).astype(np.int64)
 
 if todisk:
     mxxl.write('{}/MXXL/bright_v{:.1f}.fits'.format(odir, version), format='fits', overwrite=True)
+
+exit(0)
     
 kcorrector   = ajs_kcorr()
 

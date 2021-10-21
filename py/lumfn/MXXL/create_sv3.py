@@ -7,7 +7,24 @@ from   astropy.table import Table
 sys.path.append('/global/homes/m/mjwilson/desi/BGS/lumfn/py/lumfn/MXXL/')
 
 from   rotate_mock import rotate_mock
+from desimodel.footprint import is_point_in_desi 
 
+def tile2rosette(tile):
+    if tile < 433:
+        return (tile-1)//27
+    else:
+        if tile >= 433 and tile < 436:
+            return 13
+        if tile >= 436 and tile < 439:
+            return 14
+        if tile >= 439 and tile < 442:
+            return 15
+        if tile >= 442 and tile <=480:
+            return (tile-442)//3
+            
+        if tile > 480:
+            return tile//30    
+    return 999999 #shouldn't be any more?
 
 # /global/project/projectdirs/desi/mocks/bgs/MXXL/one_percent/README
 # fpath = '/project/projectdirs/desi/mocks/bgs/MXXL/full_sky/v0.0.4/BGS_r20.6.hdf5'
@@ -26,14 +43,12 @@ tt    = f["Data/galaxy_type"][...]
 hmass = f["Data/halo_mass"][...]
 
 # 
-fpath = '/project/projectdirs/desi/mocks/MXXL/v4.0/one_percent/onepercent_v3.hdf5'
+fpath = '/project/projectdirs/desi/mocks/MXXL/v4.0/one_percent/one_percent_v2.hdf5'
 
 f     = h5py.File(fpath, mode='r') 
 nmock = f['nmock'][:]
 
 print(f.keys())
-
-exit(0)
 
 isin  = (r <= 19.5) & (nmock > -1)
 
@@ -56,8 +71,25 @@ for un in uns:
     data['RA'][isin]  = _ras
     data['DEC'][isin] = _decs
 
+## 210 tiles.
+tiles            = Table.read('/global/cfs/cdirs/desi/spectro/redux/everest/tiles-everest.csv')
+tiles['RA']      = tiles['TILERA'].data
+tiles['DEC']     = tiles['TILEDEC'].data
+tiles            = tiles[tiles['FAFLAVOR'].data == 'sv3bright']
+tiles            = tiles[tiles['OBSSTATUS'] == 'obsend']
+tiles['ROSETTE'] = np.array([tile2rosette(tileid) for tileid in tiles['TILEID'].data])
+
+tiles.pprint()
+
+
+isin, idx = is_point_in_desi(tiles, data['RA'].data, data['DEC'].data, return_tile_index=True)
+
+data['TILEID']   = tiles['TILEID'].data[idx]
+data['ROSETTE']  = tiles['ROSETTE'].data[idx]
+data['TARGETID'] = np.arange(len(data), dtype=np.int64)
+
 root  = "/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/MXXL/"
-fpath = root + "galaxy_catalogue_sv3s_v2.fits"
+fpath = root + "galaxy_catalogue_sv3s_v3.fits"
 
 data.write(fpath, format='fits', overwrite=True)
 
