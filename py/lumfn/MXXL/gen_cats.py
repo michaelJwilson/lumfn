@@ -36,11 +36,11 @@ from   MXXL.mxxl_params   import mxxl_params
 root  = "/global/cscratch1/sd/mjwilson/desi/BGS/lumfn/MXXL/"
 
 # fpath = root + "galaxy_catalogue_small.hdf5"
-fpath = root + "galaxy_catalogue_sv3s_v3.fits"
+fpath = root + "galaxy_catalogue_sv3s_v4.fits"
 
 print(fpath)
 
-version          = 0.7
+version          = 0.8
 todisk           = True
 dryrun           = False
 tmr              = False
