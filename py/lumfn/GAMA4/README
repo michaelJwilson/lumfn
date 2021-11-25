@@ -1,0 +1,211 @@
+EqInputCat
+TilingCat
+v46
+2015-05-22
+Ivan Baldry <i.baldry@ljmu.ac.uk>
+
+
+This table contains the tiling catalog (TC) sources for the GAMA II
+equatorial survey regions.
+
+Dependencies: InputCatAv06, SpecCatv26 DMU, PhotoZv03. 
+
+Changes from v44/v45: update of SpecCat from v26 to v27. This fixed
+a bug where sometimes the best spectrum was not identified correctly. 
+This results in 43 specid differences. 
+
+Derived from InputCatAv06, selecting GAMA regions (5x12), applying
+magnitude limits, star-galaxy separation, SB limits, and mask.
+See <a href="http://adsabs.harvard.edu/abs/2010MNRAS.404...86B">Baldry et al. 2010</a> for details. 
+
+For science catalogs: select SURVEY_CLASS >= 3 for union of GAMA II
+Main Survey and GAMA I Main Survey. MS (used below) is this union.
+Reliable redshifts can now be taken as (nQ >= 3) or (nQ2_flag >= 1). 
+The number of MS targets with reliable redshifts is 188810 (98.85%).
+
+GAMA II Main Survey = r < 19.8 based on DR7 mags; GAMA I Main Survey = 
+r < 19.4 (G09,G15) or r < 19.8 (G12) or K_AB < 17.6 or z_{model} < 18.2
+based on DR6 mags over area_flag=2. The latter were obtained by
+matching to TilingCatv11 (or v16). The column TC_V11_ID gives the
+CATAID in v11 which is identical to CATAID in this table except over a
+small area in G09 - and is -1 if there is no match to a TC v11
+object. Over an area in the southern part of G09, the imaging used is
+different between InputCatAv05 (TC v11) and InputCatAv06 (this version
+of TC). See also the table <a href="/db/schema/table.php?id=317">GamaIToGamaII</a> in this DMU.
+
+Filler sample is H-ATLAS selections in all three regions, 19.8-19.85
+in all and multi-wavelength SDSS selections in G12 as per that used in
+TC v11.
+
+The heliocentric redshifts are obtained by matching to <a href="/db/schema/table.php?id=416">SpecAllv26</a>. Matches
+are by CATAID except for a few cases. There are 6 cases where an object is
+matched within 1 arcsec to a spectrum that has been assigned to another
+object. These are all vis_class=3 objects. Most of the redshifts are
+obtained from GAMA-AAOmega autoz (Baldry et al. 2014) or SDSS DR10 (Bolton
+et al. 2012). For cosmological distances, it is recommended to use z_cmb
+or z_tonry from the <a href="/db/schema/dmu.php?name=LocalFlowCorrection">LocalFlowCorrection</a> DMU.
+
+NUM_GAMA_SPEC is the number of GAMA-AAOmega spectra matched to the
+target within 1 arcsec. This parameter NUM_GAMA_SPEC is used to assess
+the progress of obtaining good redshifts, see PV below.
+
+...............................................................................
+
+221373 rows
+
+Expanded explanation of some columns below.
+
+...............................................................................
+
+NQ2_FLAG
+
+This flag is for tests of NQ=2 redshifts against independent
+measurements. First of all, the SpecAll table was trimmed to redshifts
+with nQ=2, and redshifts with SPECID that matched to SPECID2 or
+SPECID3 from AATSpecAutozComb were removed. The latter procedure is
+because these spectra have already been used in combination for some
+of the redshifts. z_photo measurements were taken from the PhotoZ DMU.
+
+For this flag two tests were performed: (i) redshifts with PROB > 0.7
+and |(z_photo - z_spec)/(1 + z_spec)| < 0.07 were given a value of
+NQ2_FLAG = 1, and (ii) redshifts that agreed with an independent NQ=2
+redshift were given a value NQ2_FLAG = NQ2_FLAG + 2. Thus, a value of
+3 means both tests were satisfied.
+
+It is left up to the users to decide whether NQ2_FLAG >= 1 redshifts
+should be considered reliable.
+
+...............................................................................
+
+VEL_ERR
+
+This gives the redshift uncertainty, assuming the correct redshift
+peak has been assigned, in velocity units, i.e., c delta ln(1+z). For
+GAMA-AAOmega and SDSS DR10, the estimate is individually calibrated
+for each spectrum, for details, see Baldry et al. (2014) and Bolton et
+al. (2012), respectively. The SDSS velocity errors have had 10 km/s
+added in quadrature. For the other redshifts, a quantised estimate is
+given depending on SURVEY_CODE and NQ values. For example, 2dFGRS/MGC
+Q=4 redshifts have been assigned a VEL_ERR of 85 km/s, similar to the
+Colless et al. (2001) estimate. Overall, VEL_ERR ranges from 10 km/s
+to 160 km/s, which is a set upper limit; excluding assigned -99.9
+values for no redshift measurement.
+
+...............................................................................
+
+VIS_CLASS for visual classification
+
+0   = not eyeballed
+1   = yes a target
+2   = not a target (no evidence of galaxy light)
+3   = not a target (not the main part of a galaxy)
+4   = compromised photometry (selection mag has serious error)
+255 = not eyeballed but the following SDSS flags are *all* zero:
+      EDGE, BLENDED, CHILD, MAYBE_CR, MAYBE_EGHOST
+
+...............................................................................
+
+SURVEY_CLASS (SC)
+
+sc = 0:  not a target (except for checks on vis_class=3)
+sc = 1:  filler targets - 19.8-19.85, multi-lambda (G12)
+sc = 2:  H-ATLAS targets
+sc >= 3: *** MS *** union of GAMA II main survey and GAMA I main survey
+sc >= 4: r < 19.8, GAMA II main survey
+sc >= 5: r < 19.8 and satisfies r-band star-galaxy separation
+sc = 6:  r < 19.4 and satisfies r-band star-galaxy separation
+
+See 'Input catalogue and star-galaxy separation' (IC) paper for
+details on selection.
+
+Further note: objects with target_flags=0 (also survey_class=0) have
+2 <= vis_class <= 4 or they are excluded by Eq. 12 only of the IC
+paper (Sec. 5.2). These remain in the tiling catalogue because they
+are rejected by a more subjective criteria than the other selections.
+
+...............................................................................
+
+SURVEY_OLDCLASS (soc)
+
+soc = 0:  not a target (except for checks on vis_class=3)
+soc = 1:  filler targets - 19.8-19.85, multi-lambda (G12)
+soc = 2:  H-ATLAS targets
+soc >= 3: *** MS *** union of GAMA II main survey and GAMA I main survey
+soc >= 4: GAMA I main survey
+soc >= 5: GAMA I main survey r or z-selected
+soc >= 6: GAMA I main survey r-selected only
+soc = 7:  r < 19.0 and sg_sep > 0.25 (Year 1 high priority targets)
+
+.............................................................................
+
+TARGET_FLAGS (T) 
+
+This is used to show which target criteria are satisfied using a
+bitwise set of flags.
+
+bits X: 0-1 are for SDSS; 2-8 are for GAMA I, 9-13 are for GAMA II. 
+
+ X   2^X  meaning
+
+ 0     1  SDSS main galaxy sample
+ 1     2  SDSS LRG sample
+ 2     4  r < 19.0 and r_psf-r_model > 0.25 (high priority in Year 1)
+ 3     8  r < 19.4 (G09,G15) or r < 19.8 (G12) (GAMA I r-limited main survey)
+ 4    16  r < 19.8 (GAMA I regions)
+ 5    32  z_model < 18.2 (part of GAMA I main survey)
+ 6    64  K_AB < 17.6    (part of GAMA I main survey)
+ 7   128  g_model < 20.6 or r_model < 19.8 or i_model < 19.4 (G12)
+ 8   256  radio_flux > 0.0
+ 9   512  H-ATLAS target
+10  1024  r < 19.8 (GAMA II main survey)
+11  2048  union of GAMA I and GAMA II main surveys
+12  4096  r < 19.85
+13  8192  g_model < 20.6 or r_model < 19.8 or i_model < 19.4 or z_model < 18.2 (G12)
+14 16384  random selection of GAMA II MS, 3685 targets, 77% repeated spectroscopy
+
+.............................................................................
+
+SURVEY_CODE
+
+  1=SDSS;  2=2dFGRS;  3=MGC;  4=2SLAQ-LRG;  5=GAMA-AAOmega;  6=6dFGS;  
+  7=UZC;  8=2QZ;  9=2SLAQ-QSO;  10=NED;  11=GAMA-LT;  12=WiggleZ  
+
+...............................................................................
+
+PRIORITY_CLASS (IP)
+
+IP >= 1                satisfy fiber mag limits 16.6 < r_fib < 22.6
+IP >= 1 except p=7     satisfy vis_class <= 1 or vis_class=255
+
+PV represents a progress value. 
+PV takes the value 1 for Q=3 or 2 for Q >= 4, plus NUM_GAMA_SPEC. 
+
+IP=9:  MS and PV=0            Q<=2 and NUM_GAMA_SPEC=0
+IP=8:  MS and PV=1            one failed GAMA obs.; or Q=3 no GAMA or SDSS
+IP=7:  vis_class=3 and PV<=1  would be a target other than vis_class
+IP=6:  H-ATLAS and PV<=1      H-ATLAS targets matched to InputCatAv06
+IP=5:  FILLER and PV<=1       further filler sample
+IP=3:  MS and PV=2            e.g. two failed GAMA obs.; Q=3 one GAMA obs.
+IP=2:  MS and PV>=3           considered done
+IP=1:  FILLER and PV>=2       considered done
+IP=0:  all others including: vis_class=2-4 objects, fibre bright or faint. 
+
+.............................................................................
+
+Numbers in each PRIORITY_CLASS (IP)
+(This is more or less redundant since we are unlikely to observe using
+these tiling priorities anymore; but given here to inform completeness.)
+
+ IP   remaining   notes
+
+  9         167   high priority determines completeness
+  8         950   " 
+  7          35   vis_class = 3 quality control
+  6        1113   H-ATLAS fillers
+  5       17795   other fillers 
+  4           0   not used
+  3        6021   quality control 
+  2      183650   main survey done
+  1        9210   fillers done
+  0        2432   not an AAOmega target
+
